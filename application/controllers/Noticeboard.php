@@ -21,6 +21,7 @@ class Noticeboard extends CI_Controller {
                 $this->load->library('form_validation');
                 
               $this->form_validation->set_rules('notice_description', 'Notice Description', 'trim|required');
+              $this->form_validation->set_rules('tanggal_berlaku', 'Tanggal Berlaku', 'trim|required');
               
                 if ($this->form_validation->run() == FALSE) 
         		{
@@ -34,12 +35,13 @@ class Noticeboard extends CI_Controller {
                 {
                     
                            $notice_description = $this->input->post("notice_description");
+                           $tanggal_berlaku = $this->input->post("tanggal_berlaku");
                            $notice_type = $this->input->post("notice_type");
                            
                             $this->load->model("common_model");
                             $this->common_model->data_insert("notice_board",
                             array("notice_description"=>$notice_description, "school_id"=>_get_current_user_id($this), 
-                                  "notice_type"=>$notice_type,"notice_status"=>"1"
+                                  "notice_type"=>$notice_type,"notice_status"=>"1", 'on_date'=>$tanggal_berlaku
                                   ));
                             $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
                                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -74,6 +76,8 @@ class Noticeboard extends CI_Controller {
                 $this->load->library('form_validation');
                 
              $this->form_validation->set_rules('notice_description', 'Notice Description', 'trim|required');
+             $this->form_validation->set_rules('tanggal_berlaku', 'Tanggal Berlaku', 'trim|required');
+              
               
                 if ($this->form_validation->run() == FALSE) 
         		{
@@ -86,8 +90,9 @@ class Noticeboard extends CI_Controller {
         		} else{ 
                         $notice_description = $this->input->post("notice_description");
                            $notice_type = $this->input->post("notice_type");
+                           $tanggal_berlaku = $this->input->post("tanggal_berlaku");
                 
-                        $update_array =array("notice_description"=>$notice_description,"notice_type"=>$notice_type );
+                        $update_array =array("notice_description"=>$notice_description,"notice_type"=>$notice_type, "on_date"=>$tanggal_berlaku);
                         
                             $this->load->model("common_model");
                             $this->common_model->data_update("notice_board",$update_array,array("notice_id"=>$notice_id)

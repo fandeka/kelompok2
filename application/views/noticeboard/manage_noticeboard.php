@@ -51,6 +51,17 @@
                                        <textarea rows="5" id="notice_description" name="notice_description" class="form-control" placeholder="Detail Pengumuman"></textarea>
                                     </div>
                                     <div class="col-md-12">
+                                       <div class="form-group">
+                                      <label for="start_date">Tanggal Berlaku <span class="red">*</span></label>
+                                        <div class="input-group">
+                                          <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                      <input type="text" class="form-control" id="tanggal_berlaku" name="tanggal_berlaku" placeholder="Tanggal Berlaku" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    <div class="col-md-12">
                                         <label for="notice_type">Pilih Tipe Pengumuman <span class="red">*</span></label>
                                         <select name="notice_type" class="form-control select2"> 
                                             <?php foreach($this->config->item("notice_type") as $notice){ ?>
@@ -189,6 +200,18 @@
     $(function(){
        $(".select2").select2();
     });
+    </script>
+
+    <script>
+      $(function () {
+        
+         $("[data-mask]").inputmask("yyyy/mm/dd", {"placeholder": "yyyy/mm/dd"});
+        $(".timepicker").timepicker({
+          showInputs: false
+        });
+      
+
+      });
     </script>
     
   </body>
