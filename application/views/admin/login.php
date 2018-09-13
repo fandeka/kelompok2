@@ -7,7 +7,7 @@
         
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-      <a href="#"><img src="<?php echo base_url("img/logo.png"); ?>"/></a>
+      <a href="#"><img src="<?//php echo base_url("img/logo.png"); ?>"/></a>
         <p class="login-box-msg">Sign in to your account</p>
         <? if(isset($error) && $error!=""){
                             echo $error;

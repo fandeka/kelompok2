@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://localhost:89/education/';
-$config['base_url'] = 'http://192.168.11.162/elearning/';
+$config['base_url'] = 'http://2tni.mabes.online/';
 $config['theme_admin'] = "theme/admin";
 $config['theme_frontend'] = "theme/frontend";
 

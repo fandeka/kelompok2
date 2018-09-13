@@ -30,10 +30,7 @@ class Admin extends CI_Controller {
                 if ($this->form_validation->run() == FALSE) 
         		{
         		  
-        			$data["error"] = '<div class="alert alert-warning alert-dismissible" role="alert">
-                                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                  <strong>Warning!</strong> '.$this->form_validation->error_string().'
-                                </div>';
+        			//$data["error"] = '<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><strong>Warning!</strong> '.$this->form_validation->error_string().'</div>';
                     
         		}else
                 {

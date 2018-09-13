@@ -35,7 +35,7 @@
                  <?php
                 $img = base_url("img/default.png");
                 if($teacher_detail->teacher_image != ""){
-                $img = $this->config->item('base_url').'uploads/teacherphoto/'.$teacher_detail->teacher_image; } 
+                $img = $this->config->item('base_url').'/uploads/teacherphoto/'.$teacher_detail->teacher_image; } 
             ?> 
             <img src="<?php echo $img; ?>" alt="Teacher Photo" title="Teacher Photo" class="profile-user-img img-responsive img-circle" />
                   

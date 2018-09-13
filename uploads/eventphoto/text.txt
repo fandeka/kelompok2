@@ -1,0 +1,40 @@
+
+https://goo.gl/mGLxtZ
+
+Pseudocode
+
+Begin 
+
+If Button = OK
+	Set Perintah A
+Else 	Set Perintah B
+
+End
+
+Ketika klik Image Hat
+1. Rabit keluar
+2. Suara tada
+3. Tombol restart enabled true
+
+
+Klik Restart ( Image sudah berubah ke Rabit)
+1. Muncul Dialog
+	1.1 OK
+	   -Munculkan image hat
+	   -Button restart enabled.false
+
+	1.2 Cancel
+	   -Munculkan image Rabit
+	   - Button restart enabled.true
+
+		
+
+
+
+
+
+
+
+
+
+

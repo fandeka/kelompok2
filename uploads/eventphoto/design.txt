@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/angka2"
+        android:layout_width="294dp"
+        android:layout_height="40dp"
+        android:text="Masukan Angka Kedua"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="73dp" />
+
+    <Button
+        android:id="@+id/hitung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hitung Angka"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <EditText
+        android:id="@+id/angka1"
+        android:layout_width="293dp"
+        android:layout_height="46dp"
+        android:text="Masukan Angka Pertama"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/modulus"
+        android:layout_width="294dp"
+        android:layout_height="46dp"
+        android:text="Modulus"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="432dp" />
+
+    <TextView
+        android:id="@+id/pembagian"
+        android:layout_width="294dp"
+        android:layout_height="46dp"
+        android:text="Pembagian"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="369dp" />
+
+    <TextView
+        android:id="@+id/perkalian"
+        android:layout_width="294dp"
+        android:layout_height="46dp"
+        android:text="Perkalian"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="305dp" />
+
+    <TextView
+        android:id="@+id/pengurangan"
+        android:layout_width="294dp"
+        android:layout_height="46dp"
+        android:text="Pengurangan"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="242dp" />
+
+    <TextView
+        android:id="@+id/penjumlahan"
+        android:layout_width="295dp"
+        android:layout_height="46dp"
+        android:text="Penjumlahan"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+</android.support.constraint.ConstraintLayout>

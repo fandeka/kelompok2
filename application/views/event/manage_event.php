@@ -133,7 +133,7 @@
                                <?php 
                           
                                   if($eventdlist->event_image!=""){
-                                    $img = $this->config->item('base_url')."uploads/eventphoto/".$eventdlist->event_image;?>
+                                    $img = $this->config->item('base_url')."/uploads/eventphoto/".$eventdlist->event_image;?>
 
                                      <img src="<?php echo $img; ?>" style="height: 100px; width: 100px;"/>
 
@@ -142,7 +142,7 @@
                             <?php 
                           
                                   if($eventdlist->file_attachment!=""){
-                                    $file = $this->config->item('base_url')."uploads/eventphoto/".$eventdlist->file_attachment;?>
+                                    $file = $this->config->item('base_url')."/uploads/eventphoto/".$eventdlist->file_attachment;?>
                                     <a href="<?php echo $file; ?>" download> Unduh Materi</a>
 
                             <?php } ?>
