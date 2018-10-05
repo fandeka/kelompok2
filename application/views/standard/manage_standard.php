@@ -50,6 +50,12 @@
                                         <label for="user_fullname">Nama Standar <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="standard_title" name="standard_title" placeholder="Ex. 1, 2, L.K.G, Android, etc" />
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label for="year">Tahun Standar <span class="red">*</span></label>
+                                        <input type="text" class="form-control" id="year" name="year" placeholder="Tahun" data-inputmask="'alias': 'yyyy'" data-mask value="<?php if(isset($_REQUEST["year"])){echo $_REQUEST["year"]; } ?>">
+                                    </div>
+                                   
                                    
                                     
                                     </div>
@@ -72,6 +78,7 @@
                       <tr>
                         <th>ID</th>
                         <th>Nama Standar</th>
+                        <th>Tahun Standar</th>
                         <th width="80">Aksi</th>
                       </tr>
                     </thead>
@@ -82,6 +89,7 @@
                         
                         <td><?php echo $standardlist->standard_id; ?></td>
                         <td><?php echo $standardlist->standard_title; ?></td>
+                        <td><?php echo $standardlist->year; ?></td>
                         
                         <td>
                             <a href="<?php echo site_url("standard/edit_standard/".$standardlist->standard_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
@@ -122,6 +130,15 @@
     <script src="<?php echo base_url($this->config->item("theme_admin")."/bootstrap/js/bootstrap.min.js"); ?>"></script>
     <!-- Select2 -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/select2/select2.full.min.js"); ?>"></script>
+        <!-- InputMask -->
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/input-mask/jquery.inputmask.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/input-mask/jquery.inputmask.date.extensions.js"); ?>"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/input-mask/jquery.inputmask.extensions.js"); ?>"></script>
+    <!-- bootstrap time picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/daterangepicker/daterangepicker.js"); ?>"></script>
+   
+    <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/timepicker/bootstrap-timepicker.min.js"); ?>"></script>
     <!-- DataTables -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/datatables/jquery.dataTables.min.js"); ?>"></script>
     <script src="<?php echo base_url($this->config->item("theme_admin")."/plugins/datatables/dataTables.bootstrap.min.js"); ?>"></script>
@@ -144,6 +161,27 @@
 
       });
     </script>
+
+    <script>
+    $(function(){
+       $(".select2").select2();
+    });
+    </script>
+    
+
+    <script>
+      $(function () {
+        
+        $("[data-mask]").inputmask("9999", {
+            postValidation: function (buffer, opts) {
+                return parseInt(buffer.join('')) <= (new Date()).getFullYear();
+            }
+        });
+
+      });
+    </script>
+
+
  
     
   </body>

@@ -70,6 +70,7 @@
               <ul class="treeview-menu">
                         <li><a href="<?php echo site_url("student/add_student"); ?>"><i class="fa fa-plus"></i>Tambah Siswa / Peserta</a></li>
                         <li><a href="<?php echo site_url("student/list_student"); ?>"><i class="fa fa-list"></i>Daftar Siswa / Peserta</a></li>
+                        <li><a href="<?php echo site_url("student/history_student"); ?>"><i class="fa fa-history"></i>History Siswa / Peserta</a></li>
               </ul>
             </li>
              <li>

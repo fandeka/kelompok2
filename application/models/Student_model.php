@@ -21,7 +21,7 @@ class Student_model extends CI_Model{
             //inner join standard on standard.standard_id = student_detail.student_standard
             //where student_detail.school_id="._get_current_user_id($this));
             
-             $sql = "select student_detail.*, standard.standard_title,standard.standard_id from student_detail 
+             $sql = "select student_detail.*, standard.year, standard.standard_title,standard.standard_id from student_detail 
             inner join standard on standard.standard_id = student_detail.student_standard
             where 1 ".$filter_text;
             
@@ -72,10 +72,46 @@ public function get_school_standard_student_add_rank($standard){
             $q = $this->db->get();
             return $q->result();
 
-        }          
-        
-        
+        } 
 
+
+
+
+    public function get_history_student($filter=array()){
+           
+            $filter_text = "";
+             
+                if(!empty($filter)){
+                    if(key_exists("student_standard",$filter)){
+                        $filter_text .= " and  `history_student`.student_standard = '".$filter['student_standard']."' ";
+                    }
+                   
+                }
+                
+                 else{
+                    
+                        $filter_text .= " and  `history_student`.school_id = "._get_current_user_id($this);
+                    
+                }
+
+            
+             $sql = "select history_student.*, standard.year, standard.standard_title,standard.standard_id from history_student 
+            inner join standard on standard.standard_id = history_student.student_standard
+            where 1 ".$filter_text;
+            
+            $q = $this->db->query($sql);
+            return $q->result();
+    }          
+    
+    public function get_history_student_by_id($id){
+        $q = $this->db->query("select * from history_student where student_id = '".$id."' limit 1");
+        return $q->row();
+    }  
+        
+    public function get_history_student_by_uniqueno_standardno($unique_no,$standard_id){
+        $q = $this->db->query("select * from history_student where student_unique_no = '".$unique_no."' and student_standard = '".$standard_id."' order by id desc limit 1" );
+        return $q->row();
+    }  
        
 
 }

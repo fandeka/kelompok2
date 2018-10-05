@@ -13,12 +13,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Siswa / Peserta 
-            <small>Kelola</small>
+            History Siswa
+            <small></small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Siswa / Peserta</a></li>
-            <li class="active">Daftar</li>
+            <li class="active">History</li>
           </ol>
         </section>
 
@@ -32,13 +32,13 @@
                                            <option value="">Pilih Standar</option>
                                             <?php foreach($school_standard as $standard){
                                                 ?>
-                                                <option value="<?php echo $standard->standard_id; ?>" <?php  if(isset($_GET["standard"]) && $_GET["standard"]==$standard->standard_id){ echo "selected"; } ?>><?php echo $standard->standard_title; echo " - "; echo $standard->year;?></option>
+                                                <option value="<?php echo $standard->standard_id; ?>" <?php  if(isset($_GET["standard"]) && $_GET["standard"]==$standard->standard_id){ echo "selected"; } ?>><?php echo $standard->standard_title; echo" - ";echo $standard->year; ?></option>
                                                 <?php
                                             } ?>
                                         </select>
                 </div>
                 <div class="col-md-4">
-                 <a href="<?php echo site_url("student/list_student"); ?>" class="btn btn-primary pull-right">Bersihkan Filter</a>
+                 <a href="<?php echo site_url("student/history_student"); ?>" class="btn btn-primary pull-right">Bersihkan Filter</a>
                 </div>                       
                                         
             </div>
@@ -51,7 +51,7 @@
                  
                  <a href="<?php //echo site_url("student/student_print"); ?>" class="btn btn-primary "><i class="fa fa-print"></i> Print</a>
                 </div> -->
-             <a href="<?php echo site_url("student/add_student"); ?>" class="btn btn-primary pull-right">Tambah</a>
+             <!-- <a href="<?php //echo site_url("student/add_student"); ?>" class="btn btn-primary pull-right">Tambah</a> -->
             </div>
            
          </div>
@@ -67,42 +67,44 @@
                        <th>ID</th> 
                         <th>Nama</th>
                          <th>Standar</th>
+                         <th>Tahun Standar</th>
                        <!-- <th>Student Roll No</th> -->
                         <th>Username</th>
                         <th>Password</th>
                         
                        <th>Alamat</th>
                       <th>Telepon</th>
-                      <th>Perkembangan</th>
-                      <th>Status</th>
+<!--                       <th>Perkembangan</th>
+                      <th>Status</th >-->
                         <th width="80">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                <?php foreach($student as $students){
+
+                <?php foreach($history_student as $students){
+
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $students->student_id; ?>
+                       <td><?php echo $students->student_id; ?></td>
                         <td>
-                        <?php echo anchor('student/student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); ?>
-                        </td>
-                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?>
-                      </td>
+                        <?php echo anchor('student/history_student/'.$students->student_id, $students->student_name, 'title="History Student"'); ?></td>
+                        <td><?php echo $students->standard_title; ?></td>
+                        <td><?php echo $students->year; ?></td>
                       <!--  <td><?php //echo $students->student_roll_no; ?></td> -->
                         <td><?php echo $students->student_user_name; ?></td>
                         <td><?php echo $password = $students->student_orgpassword; ?></td>
                         <td><?php echo $students->student_address; ?></td>
                         <td><?php echo $students->student_phone; ?></td>
-                        <td>
-                        <a href="<?php echo site_url("growth/manage_growth/".$students->student_id); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Set Perkembangan</a>
-                       </td>
-                         <td><input class='tgl tgl-ios tgl_checkbox' data-table="student_detail" data-status="student_status" data-idfield="student_id"  data-id="<?php echo $students->student_id; ?>" id='cb_<?php echo $students->student_id; ?>' type='checkbox' <?php echo ($students->student_status==1)? "checked" : ""; ?> />
-    <label class='tgl-btn' for='cb_<?php echo $students->student_id; ?>'></label></td>
+<!--                         <td>
+                        <a href="<?php // echo site_url("growth/manage_growth/".$students->student_id); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Set Perkembangan</a>
+                       </td> -->
+<!--                          <td><input class='tgl tgl-ios tgl_checkbox' data-table="student_detail" data-status="student_status" data-idfield="student_id"  data-id="<?php //echo $students->student_id; ?>" id='cb_<?php //echo $students->student_id; ?>' type='checkbox' <?php //echo ($students->student_status==1)? "checked" : ""; ?> />
+    <label class='tgl-btn' for='cb_<?php // echo $students->student_id; ?>'></label></td> -->
                         <td>
                             
-                            <a href="<?php echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                            <a href="<?php echo site_url("student/delete_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+                            <!-- <a href="<?php // echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a> -->
+                            <a href="<?php echo site_url("student/delete_history_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
                         </form>
                     </tr>
@@ -220,7 +222,7 @@ function choose_standard_type() {
     var val = document.getElementById("standard_type").value;
     url_segment.standard = val;
     var join_url =join_url_segment(url_segment);
-    window.location = "<?php echo site_url("student/list_student");?>?"+join_url;
+    window.location = "<?php echo site_url("student/history_student");?>?"+join_url;
 }
 
 function join_url_segment(g_array){

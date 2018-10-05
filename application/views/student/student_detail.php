@@ -34,12 +34,22 @@
         <!-- Main content -->
         <section class="content">
          <div class="row">
-    <div class="pull-right">
+        <div class="pull-right">
          <input type="button" value="Print" onclick="window.print()" class="btn btn-primary non-print" />
         </div>
 		<div class="col-sm-12 col-md-12 col-xs-12 user-details">
         
             <div class="box">
+            <strong>
+                       <?php 
+                            echo $this->session->flashdata("message");
+                               ?>
+                                <? if(isset($error)){
+                            echo $error;
+                        } ?>
+            </strong>
+            <br/>
+            <br/>
             
             <?php
                 $img = base_url("img/default.png");
@@ -112,7 +122,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <strong>Note*: Please Update Student Detail to Display All Data</strong>
+                  <!-- <strong>Note*: Please Update Student Detail to Display All Data</strong> -->
                 </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
                   <h4>School Information</h4>
@@ -191,6 +201,16 @@
                       </tr> 
                     </tbody>
                   </table>
+                      <strong>Note*: Salin ke History untuk memindah data siswa ke menu history siswa</strong>
+                      <br/>
+                      <br/>
+                      <hr/>
+                      <div class="pull-left">
+                        <a href="<?php echo site_url("student/copy_student/".$student_detail->student_id); ?>" class="btn btn-primary"><i class="fa fa-copy"> Salin ke History</i></a>
+
+                      </div>
+
+                      
                 </div>
                 </div>
                 </div>

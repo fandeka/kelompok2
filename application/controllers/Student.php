@@ -386,7 +386,158 @@ public function student_print(){
                 redirect("student/list_student");
            }
     }
+
+
+    public function history_student(){
+
+        if(_is_user_login($this)){
+           // $data = array();
+            
+          $filter = array();   
+           if(isset($_GET['standard'])){
+                $filter['student_standard'] = $_GET['standard'];
+            }
+            $this->load->model("student_model");
+            $data["history_student"] = $this->student_model->get_history_student($filter);
+            
+            /* get school standard */
+           $this->load->model("standard_model");
+          $data["school_standard"] = $this->standard_model->get_school_standard();
+
+
+          // print("<pre>".print_r($data["history_student"],true)."</pre>"); die();
+
+
+           $this->load->view("student/history_student",$data);
+        }
+    }
+
+
+    public function copy_student($student_id){
+        if(_is_user_login($this)){
+
+
+            $data_history = array();
+
+            $this->load->model("student_model");
+            $data_history  = $this->student_model->get_history_student_by_id($student_id);
+
+             
+            if(!empty($data_history)){
+                $this->session->set_flashdata("message", '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                  <strong>Gagal!</strong> Data sudah ada di history
+                                </div>');
+                redirect("student/student_detail/".$student_id);
+            } else {
+
+                    $data = array();
+                    $this->load->model("student_model");
+                    $data  = $this->student_model->get_school_student_by_id($student_id);
+                    // print_r($data->student_id); die();
+
+                    $unique_no = $data->student_unique_no;
+                    $standard_id = $data->student_standard;
+
+                    $data_prev = $this->student_model->get_history_student_by_uniqueno_standardno($unique_no,$standard_id);
+
+                    if(!empty($data_prev)){
+                            $this->session->set_flashdata("message", '<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                              <strong>Gagal!</strong> Data sudah ada di history dengan standard yang sama
+                                            </div>');
+                            redirect("student/student_detail/".$student_id);
+
+                    } else{
+
+                            $this->load->model("common_model");
+                            $this->common_model->data_insert("history_student",
+                            array(
+                                        "student_name"=>$data->student_name,
+                                        "student_birthdate"=>$data->student_birthdate,
+                                        "student_unique_no"=>$data->student_unique_no,
+                            
+                                       
+                                        "student_user_name"=>$data->student_user_name,
+                                        "student_password"=>$data->student_password,
+                                        "student_orgpassword"=>$data->student_orgpassword,
+                                        "student_standard"=>$data->student_standard,
+                                        "student_address"=>$data->student_address,
+                                        "student_city"=>$data->student_city,
+                                        "student_phone"=>$data->student_phone,
+                                        "student_parent_phone"=>$data->student_parent_phone,
+         
+                                        "student_email"=>$data->student_email,
+
+                                        "pangkat"=>$data->pangkat,
+                                        "korp"=>$data->korp,
+                                        "nrp"=>$data->nrp,
+                                        "kesatuan"=>$data->kesatuan,
+                                        "jabatan"=>$data->jabatan,
+                                        "matra"=>$data->matra,
+                                        "student_photo"=>$data->student_photo,
+                                        "school_id"=>_get_current_user_id($this),
+                                        "student_id" =>$data->student_id
+                            ));
+
+
+                            // hapus student di tabel student_detail dan buat student_id baru dari data yang di hapus
+                            $this->remove_student($student_id);
+
+
+
+                             $insert_id =  $this->common_model->data_insert("student_detail",
+                                            array(
+                                                        "student_name"=>$data->student_name,
+                                                        "student_birthdate"=>$data->student_birthdate,
+                                                        "student_unique_no"=>$data->student_unique_no,
+                                            
+                                                       
+                                                        "student_user_name"=>$data->student_user_name,
+                                                        "student_password"=>$data->student_password,
+                                                        "student_orgpassword"=>$data->student_orgpassword,
+                                                        "student_standard"=>$data->student_standard,
+                                                        "student_address"=>$data->student_address,
+                                                        "student_city"=>$data->student_city,
+                                                        "student_phone"=>$data->student_phone,
+                                                        "student_parent_phone"=>$data->student_parent_phone,
+                         
+                                                        "student_email"=>$data->student_email,
+
+                                                        "pangkat"=>$data->pangkat,
+                                                        "korp"=>$data->korp,
+                                                        "nrp"=>$data->nrp,
+                                                        "kesatuan"=>$data->kesatuan,
+                                                        "jabatan"=>$data->jabatan,
+                                                        "matra"=>$data->matra,
+                                                        "student_photo"=>$data->student_photo,
+                                                        "school_id"=>_get_current_user_id($this)
+                                            ));
+                            $siswa_id = $insert_id;
+                    }
+                    // print("<pre>".print_r($data_prev,true)."</pre>"); die();
+            }
+
+            // print("<pre>".print_r($data,true)."</pre>"); die();
+             
+             $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
+                                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                  <strong>Sukses!</strong> Data berhasil di salin
+                                </div>');
+             redirect("student/student_detail/".$siswa_id);
+        }
+
+    }
+
+
+ function remove_student($student_id){
+        $data = array();
+            $this->load->model("student_model");
+            $id  = $this->student_model->get_school_student_by_id($student_id);
+           if($id){
+                $this->db->query("Delete from student_detail where student_id = '".$id->student_id."'");
+           }
+    }
  
+
        
 }
 ?>
