@@ -51,7 +51,8 @@
                 <div class="inner">
                   <h3>
                   <?php 
-                  $q = $this->db->query("select * from student_detail where school_id="._get_current_user_id($this));
+                  // $q = $this->db->query("select * from student_detail where school_id="._get_current_user_id($this));
+                  $q = $this->db->query("select * from student_detail");
                                     $student =  $q->result();
                                     echo count($student);
                   ?>
@@ -71,7 +72,8 @@
                 <div class="inner">
                   <h3>
                   <?php 
-                  $q = $this->db->query("select * from teacher_detail where school_id="._get_current_user_id($this));
+                  //$q = $this->db->query("select * from teacher_detail where school_id="._get_current_user_id($this));
+                  $q = $this->db->query("select * from teacher_detail");
                                     $student =  $q->result();
                                     echo count($student);
                   ?>

@@ -90,7 +90,7 @@
                                         <select class="form-control select2" name="student_standard" id="student_standard" style="width: 100%;">
                                             <?php foreach($school_standard as $standard){
                                                 ?>
-                                                <option value="<?php echo $standard->standard_id; ?>" <?php if(isset($_REQUEST["student_standard"]) && $_REQUEST["student_standard"]==$standard->standard_id){echo "selected"; } ?>><?php echo $standard->standard_title; ?></option>
+                                                <option value="<?php echo $standard->standard_id; ?>" <?php if(isset($_REQUEST["student_standard"]) && $_REQUEST["student_standard"]==$standard->standard_id){echo "selected"; } ?>><?php echo $standard->standard_title; echo " - "; echo $standard->year; ?></option>
                                                 <?php
                                             } ?>
                                         </select>

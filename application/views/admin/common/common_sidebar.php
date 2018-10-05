@@ -41,12 +41,12 @@
               </a>
                
             </li>
-               <li>
+<!--                <li>
               <a href="<?php echo site_url("school/profile"); ?>">
                 <i class="fa fa-refresh"></i> <span>Perbarui Profil Kelas</span> <small class="label pull-right bg-green"></small>
               </a>
                
-            </li>
+            </li> -->
              <li>
               <a href="#">
                 <i class="fa fa-graduation-cap"></i> <span>Kelola Instruktur</span> <small class="label pull-right bg-green"></small>

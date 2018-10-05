@@ -12,11 +12,11 @@ class Student_model extends CI_Model{
                    
                 }
                 
-                 else{
+                //  else{
                     
-                        $filter_text .= " and  `student_detail`.school_id = "._get_current_user_id($this);
+                //         $filter_text .= " and  `student_detail`.school_id = "._get_current_user_id($this);
                     
-                }
+                // }
             //$q = $this->db->query("select student_detail.*, standard.standard_title from student_detail 
             //inner join standard on standard.standard_id = student_detail.student_standard
             //where student_detail.school_id="._get_current_user_id($this));
@@ -88,11 +88,11 @@ public function get_school_standard_student_add_rank($standard){
                    
                 }
                 
-                 else{
+                //  else{
                     
-                        $filter_text .= " and  `history_student`.school_id = "._get_current_user_id($this);
+                //         $filter_text .= " and  `history_student`.school_id = "._get_current_user_id($this);
                     
-                }
+                // }
 
             
              $sql = "select history_student.*, standard.year, standard.standard_title,standard.standard_id from history_student 

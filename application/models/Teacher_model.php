@@ -3,7 +3,8 @@ class Teacher_model extends CI_Model{
      
     public function get_school_teacher(){
            
-             $sql = "select * from teacher_detail where school_id="._get_current_user_id($this);
+             //$sql = "select * from teacher_detail where school_id="._get_current_user_id($this);
+             $sql = "select * from teacher_detail order by teacher_name ASC";
             
             $q = $this->db->query($sql);
             return $q->result();
