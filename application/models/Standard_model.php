@@ -2,8 +2,8 @@
 class Standard_model extends CI_Model{
    
     public function get_school_standard(){
-            //$q = $this->db->query("select * from standard where school_id="._get_current_user_id($this));
-            $q = $this->db->query("select * from standard order by standard_id desc");
+            $q = $this->db->query("select * from standard where school_id="._get_current_user_id($this));
+           // $q = $this->db->query("select * from standard order by standard_id desc");
             return $q->result();
     }
        public function get_school_standard_by_id($id){
