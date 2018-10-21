@@ -172,7 +172,7 @@ class Teacher extends CI_Controller {
 		  
             $data = array();
             $this->load->model("teacher_model");
-            $data["teacher"] = $this->teacher_model->get_school_teacher();
+            $data["teacher"] = $this->teacher_model->get_school_teacher_by_admin();
           
             $this->load->view("teacher/list_teacher",$data);
         }
