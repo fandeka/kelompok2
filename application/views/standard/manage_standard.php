@@ -45,6 +45,16 @@
                         } ?>
                                 <div class="form-group">
                                     <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="student_class">id Nama Kelas <span class="red">*</span></label>
+                                        <select class="form-control select2" name="school_id" id="school_id" style="width: 100%;">
+                                            <?php foreach($school_data as $school){
+                                                ?>
+                                                <option value="<?php echo $school->user_id; ?>" <?php if(isset($_REQUEST["user_id"]) && $_REQUEST["user_id"]==$school->user_id){echo "selected"; } ?>><?php echo $school->user_class_name; echo " -- "; echo $school->user_name; ?></option>
+                                                <?php
+                                            } ?>
+                                        </select>
+                                    </div>
                                    
                                       <div class="col-md-12">
                                         <label for="user_fullname">Nama Standar <span class="red">*</span></label>
@@ -55,7 +65,7 @@
                                         <label for="year">Tahun Standar <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="year" name="year" placeholder="Tahun" data-inputmask="'alias': 'yyyy'" data-mask value="<?php if(isset($_REQUEST["year"])){echo $_REQUEST["year"]; } ?>">
                                     </div>
-                                   
+
                                    
                                     
                                     </div>
@@ -77,17 +87,28 @@
                     <thead>
                       <tr>
                         <th>ID</th>
+                        <th>Nama Kelas</th>
                         <th>Nama Standar</th>
                         <th>Tahun Standar</th>
                         <th width="80">Aksi</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody>  
                 <?php foreach($standard as $standardlist){
                     ?>
                     <tr>
-                        
                         <td><?php echo $standardlist->standard_id; ?></td>
+                        <td><?php
+
+                        $q = $this->db->query("select * from users where  user_id = '".$standardlist->school_id."' limit 1");
+                        
+                        $school_name = $q->result();
+
+                        echo $school_name['0']->user_class_name;
+         
+
+
+                         ?></td>
                         <td><?php echo $standardlist->standard_title; ?></td>
                         <td><?php echo $standardlist->year; ?></td>
                         

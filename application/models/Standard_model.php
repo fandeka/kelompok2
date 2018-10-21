@@ -11,5 +11,10 @@ class Standard_model extends CI_Model{
         return $q->row();
     }
 
+    public function get_school_standard_by_admin(){
+           $q = $this->db->query("select * from standard order by standard_id desc");
+            return $q->result();
+    }
+
 }
 ?>
