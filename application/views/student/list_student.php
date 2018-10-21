@@ -44,13 +44,13 @@
             </div>
             
               <div class="col-md-6">
-               <!--<div class="col-md-4">
-                 <a href="<?php // echo site_url("student/student_excel_download"); ?>" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Unduh Excel</a>
-                </div> -->  
-                <!-- <div class="col-md-4">
+               <div class="col-md-4">
+                 <a href="<?php  echo site_url("student/student_excel_download"); ?>" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Unduh Excel</a>
+                </div>   
+                <div class="col-md-4">
                  
-                 <a href="<?php //echo site_url("student/student_print"); ?>" class="btn btn-primary "><i class="fa fa-print"></i> Print</a>
-                </div> -->
+                 <a href="<?php echo site_url("student/student_print"); ?>" class="btn btn-primary "><i class="fa fa-print"></i> Print</a>
+                </div> 
              <a href="<?php echo site_url("student/add_student"); ?>" class="btn btn-primary pull-right">Tambah</a>
             </div>
            
