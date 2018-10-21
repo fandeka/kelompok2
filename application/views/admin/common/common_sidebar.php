@@ -16,8 +16,18 @@
               </a>
                
             </li>
+
+            <li>
+              <a href="#">
+                <i class="fa fa-graduation-cap"></i> <span>Kelola Instruktur</span> <small class="label pull-right bg-green"></small>
+              </a>
+              <ul class="treeview-menu">
+                        <li><a href="<?php echo site_url("teacher/add_teacher"); ?>"><i class="fa fa-plus"></i>Tambah Instruktur</a></li>
+                        <li><a href="<?php echo site_url("teacher/list_teacher"); ?>"><i class="fa fa-list"></i>Daftar Instruktur</a></li>
+              </ul>
+            </li>
            <!--  <li>
-              <a href="<?php echo site_url("requestdemo"); ?>">
+              <a href="<?php// echo site_url("requestdemo"); ?>">
                 <i class="fa fa-reply"></i> <span>Demo Request</span> <small class="label pull-right bg-green"></small>
               </a>
                
@@ -30,6 +40,13 @@
                         <li><a href="<?php echo site_url("users/add_user"); ?>"><i class="fa fa-plus"></i>Pengguna Baru</a></li>
                         <li><a href="<?php echo site_url("users"); ?>"><i class="fa fa-list"></i>Daftar Pengguna</a></li>
               </ul>
+            </li>
+
+            <li>
+              <a href="<?php echo site_url("standard/manage_standard"); ?>">
+                <i class="fa fa-tasks "></i> <span>Kelola Standar</span> <small class="label pull-right bg-green"></small>
+              </a>
+               
             </li>
 
               <li>
@@ -58,30 +75,16 @@
               </a>
                
             </li> -->
-             <li>
-              <a href="#">
-                <i class="fa fa-graduation-cap"></i> <span>Kelola Instruktur</span> <small class="label pull-right bg-green"></small>
-              </a>
-              <ul class="treeview-menu">
-                        <li><a href="<?php echo site_url("teacher/add_teacher"); ?>"><i class="fa fa-plus"></i>Tambah Instruktur</a></li>
-                        <li><a href="<?php echo site_url("teacher/list_teacher"); ?>"><i class="fa fa-list"></i>Daftar Instruktur</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="<?php echo site_url("standard/manage_standard"); ?>">
-                <i class="fa fa-tasks "></i> <span>Kelola Standar</span> <small class="label pull-right bg-green"></small>
-              </a>
-               
-            </li>
+
              
               <li>
               <a href="#">
                 <i class="fa fa-user"></i> <span>Kelola Siswa / Peserta</span> <small class="label pull-right bg-green"></small>
               </a>
               <ul class="treeview-menu">
-                        <li><a href="<?php echo site_url("student/add_student"); ?>"><i class="fa fa-plus"></i>Tambah Siswa / Peserta</a></li>
+                        <!-- <li><a href="<?php // echo site_url("student/add_student"); ?>"><i class="fa fa-plus"></i>Tambah Siswa / Peserta</a></li> -->
                         <li><a href="<?php echo site_url("student/list_student"); ?>"><i class="fa fa-list"></i>Daftar Siswa / Peserta</a></li>
-                        <li><a href="<?php echo site_url("student/history_student"); ?>"><i class="fa fa-history"></i>History Siswa / Peserta</a></li>
+                        <!-- <li><a href="<?php //echo site_url("student/history_student"); ?>"><i class="fa fa-history"></i>History Siswa / Peserta</a></li> -->
               </ul>
             </li>
              <li>
