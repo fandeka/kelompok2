@@ -113,7 +113,7 @@
                         <td><?php echo $standardlist->year; ?></td>
                         
                         <td>
-                            <a href="<?php echo site_url("standard/edit_standard/".$standardlist->standard_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                            <!-- <a href="<?php // echo site_url("standard/edit_standard/".$standardlist->standard_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a> -->
                             <a href="<?php echo site_url("standard/delete_standard/".$standardlist->standard_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
                     </tr>
