@@ -1,0 +1,4 @@
+ALTER TABLE `users`
+ADD COLUMN `user_class_name`  varchar(255) NOT NULL AFTER `on_date`;
+
+INSERT INTO `elearning`.`user_type_access` (`user_type_id`, `class`, `method`, `access`) VALUES ('0', 'masterstudent', '*', '1');
