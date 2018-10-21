@@ -27,6 +27,7 @@ class Users extends CI_Controller {
                 
                  $this->form_validation->set_rules('user_name', 'User Name', 'trim|required|is_unique[users.user_name]');
                 $this->form_validation->set_rules('user_password', 'Password', 'trim|required');
+                $this->form_validation->set_rules('user_class_name', 'Nama Kelas', 'trim|required');
                 $this->form_validation->set_rules('user_type', 'User Type', 'trim|required');
                 if ($this->form_validation->run() == FALSE) 
         		{
@@ -42,6 +43,8 @@ class Users extends CI_Controller {
                         $user_name = $this->input->post("user_name");
                         
                         $user_password = $this->input->post("user_password");
+                        $user_class_name = $this->input->post("user_class_name");
+                        
                         $user_type = $this->input->post("user_type");
                         
                         
@@ -54,7 +57,9 @@ class Users extends CI_Controller {
                                 "user_name"=>$user_name,
                                
                                 "user_password"=>md5($user_password),
+
                                 "user_type_id"=>$user_type,
+                                "user_class_name"=>$user_class_name,
                                 "user_status"=>$status));
                             $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
                                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -81,6 +86,8 @@ class Users extends CI_Controller {
                 
                 $this->form_validation->set_rules('user_password', 'Password', 'trim|required');
                 $this->form_validation->set_rules('user_type', 'User Type', 'trim|required');
+                $this->form_validation->set_rules('user_class_name', 'Nama Kelas', 'trim|required');
+                
                 if ($this->form_validation->run() == FALSE) 
         		{
         		  
@@ -93,12 +100,14 @@ class Users extends CI_Controller {
                 {
                         
                         $user_type = $this->input->post("user_type");
+                        $user_class_name = $this->input->post("user_class_name");
                         $status = ($this->input->post("status")=="on")? 1 : 0;
                         
                         $update_array = array(
                                  
                                 "user_type_id"=>$user_type,
-                                "user_status"=>$status);
+                                "user_status"=>$status,
+                                "user_class_name"=>$user_class_name);
                         $user_password = $this->input->post("user_password");
                         if($user->user_password != $user_password){
                             

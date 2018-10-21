@@ -31,6 +31,17 @@
                         <li><a href="<?php echo site_url("users"); ?>"><i class="fa fa-list"></i>Daftar Pengguna</a></li>
               </ul>
             </li>
+
+              <li>
+              <a href="#">
+                <i class="fa fa-user"></i> <span>Kelola Master Siswa </span> <small class="label pull-right bg-green"></small>
+              </a>
+              <ul class="treeview-menu">
+                        <li><a href="<?php echo site_url("masterstudent/add_master_student"); ?>"><i class="fa fa-plus"></i>Tambah Siswa </a></li>
+                        <li><a href="<?php echo site_url("masterstudent/list_master_student"); ?>"><i class="fa fa-list"></i>Daftar Siswa </a></li>
+                        <li><a href="<?php echo site_url("masterstudent/history_student"); ?>"><i class="fa fa-history"></i>History Siswa / Peserta</a></li>
+              </ul>
+            </li>
            <?php } ?> 
             
             

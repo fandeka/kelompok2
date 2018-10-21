@@ -35,8 +35,9 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>User Name</th>
-                        <th>User Type</th>
+                        <th>Username</th>
+                        <th>Tipe User</th>
+                        <th>Nama Kelas</th>
                         <th>Status</th>
                        
                         <th width="80">Action</th>
@@ -49,6 +50,7 @@
                         <td><?php echo $user->user_id; ?></td>
                         <td><?php echo $user->user_name; ?></td>
                         <td><?php if($user->user_type_id=="1"){ echo "School"; } ?></td>
+                         <td><?php echo $user->user_class_name; ?></td>
                         <td><input class='tgl tgl-ios tgl_checkbox' data-table="users" data-status="user_status" data-idfield="user_id"  data-id="<?php echo $user->user_id; ?>" id='cb_<?php echo $user->user_id; ?>' type='checkbox' <?php echo ($user->user_status==1)? "checked" : ""; ?> />
     <label class='tgl-btn' for='cb_<?php echo $user->user_id; ?>'></label></td>
                         <td>

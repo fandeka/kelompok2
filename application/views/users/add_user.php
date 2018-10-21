@@ -65,6 +65,10 @@
                                             } ?>
                                         </select>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label for="user_class_name">Nama Kelas</label>
+                                        <input type="text" class="form-control" id="user_class_name" name="user_class_name" placeholder="Nama Kelas" />
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
