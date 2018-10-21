@@ -91,7 +91,7 @@ class Teacher extends CI_Controller {
         if(_is_user_login($this)){
             $data = array();
             $this->load->model("teacher_model");
-            $teacherid = $this->teacher_model->get_school_teacher_by_id($teacher_id);
+            $teacherid = $this->teacher_model->get_school_teacher($teacher_id);
             $data["teacher"] = $teacherid;
            
             if($_POST){
@@ -172,7 +172,7 @@ class Teacher extends CI_Controller {
 		  
             $data = array();
             $this->load->model("teacher_model");
-            $data["teacher"] = $this->teacher_model->get_school_teacher_by_admin();
+            $data["teacher"] = $this->teacher_model->get_school_teacher();
           
             $this->load->view("teacher/list_teacher",$data);
         }

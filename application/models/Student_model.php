@@ -118,12 +118,12 @@ public function get_school_standard_student_add_rank($standard){
            
              $filter_text = "";
              
-            //     if(!empty($filter)){
-            //         if(key_exists("student_standard",$filter)){
-            //             $filter_text .= " and  `student_detail`.student_standard = '".$filter['student_standard']."' ";
-            //         }
+                if(!empty($filter)){
+                    if(key_exists("student_standard",$filter)){
+                        $filter_text .= " and  `student_detail`.student_standard = '".$filter['student_standard']."' ";
+                    }
                    
-            //     }
+                }
                 
             //      else{
                     
