@@ -22,12 +22,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header non-print">
           <h1>
-            Student 
-            <small>Student Detail</small>
+            Siswa 
+            <small>Detail Siswa</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Student</a></li>
-            <li class="active">Student Detail</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Siswa</a></li>
+            <li class="active">Detail Siswa</li>
           </ol>
         </section>
 
@@ -62,13 +62,13 @@
             <div class="user-info-block">
                 <div class="user-heading">
                     <h3><?php echo $student_detail->student_name; ?></h3>
-                     <strong>Roll No : <?php echo $student_detail->student_roll_no; ?><br />Standard : <?php echo $student_detail->standard_title; ?></strong>
+                     <strong><br />Standar : <?php echo $student_detail->standard_title; ?></strong>
                 </div>
               
                  
                 <div class="box-header">
                  <div class="fancy">
-                 <strong>Student Growth : </strong>
+                 <strong>Perkembangan Siswa : </strong>
                  
                   <table class="table">
     
@@ -81,7 +81,7 @@
                         <td><?php echo $growth->growth."(".$growth->percentage."%)"; ?></td>
                       </tr>
                        <?php }  ?>
-                       <a href="<?php echo site_url("growth/manage_growth/".$student_detail->student_id); ?>" class="non-print"> add growth</a> 
+                       Belum ada perkembangan 
                      
                     </tbody>
                   </table>
@@ -89,7 +89,7 @@
                 
             </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                <h4>Personam Information</h4>
+                <h4>Informasi Personal</h4>
                   <table class="table">
     
                     <tbody>
@@ -125,15 +125,10 @@
                   <!-- <strong>Note*: Please Update Student Detail to Display All Data</strong> -->
                 </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
-                  <h4>School Information</h4>
+                  <h4>&nbsp</h4>
                   <table class="table">
     
                     <tbody>
-                    <!--  <tr class="success">
-                        <td>Roll No : </td>
-                        <td><?php // echo $student_detail->student_roll_no; ?></td>
-                        
-                      </tr> -->
                         <tr class="info">
                         <td>Standard :</td>
                         <td><?php echo $student_detail->standard_title; ?></td>
@@ -144,31 +139,6 @@
                         <td><?php echo $student_detail->student_unique_no; ?></td>
                         
                       </tr>
-                 <!--      <tr class="success">
-                        <td>Enrolment No :</td>
-                        <td><?php // if($student_detail->student_enr_no!=""){ echo $student_detail->student_enr_no; } else{ echo "data not available";}?></td>
-                        
-                      </tr> -->
-               <!--      <tr class="danger">
-                        <td>Branch :</td>
-                        <td><?php // if($student_detail->student_branch!=""){ echo $student_detail->student_branch; } else{ echo "data not available";}?></td>
-                        
-                      </tr> -->
-                   <!--    <tr class="info">
-                        <td>Semester :</td>
-                        <td><?php //if($student_detail->student_semester!=""){ echo $student_detail->student_semester; } else{ echo "data not available";}?></td>
-                        
-                      </tr> -->
-                    <!--   <tr class="danger">
-                        <td>Division :</td>
-                        <td><?php // if($student_detail->student_division!=""){ echo $student_detail->student_division; } else{ echo "data not available";}?></td>
-                        
-                      </tr> -->
-                     <!--  <tr class="success">
-                        <td>Batch :</td>
-                        <td><?php // if($student_detail->student_batch!=""){ echo $student_detail->student_batch; } else{ echo "data not available";}?></td>
-                        
-                      </tr> -->
                       <tr class="success">
                         <td>Pangkat :</td>
                         <td><?php if($student_detail->pangkat!=""){ echo $student_detail->pangkat; } else{ echo "data not available";}?></td>
@@ -201,15 +171,6 @@
                       </tr> 
                     </tbody>
                   </table>
-                      <strong>Note*: Salin ke History untuk memindah data siswa ke menu history siswa</strong>
-                      <br/>
-                      <br/>
-                      <hr/>
-                      <div class="pull-left">
-                        <a href="<?php echo site_url("student/copy_student/".$student_detail->student_id); ?>" class="btn btn-primary"><i class="fa fa-copy"> Salin ke History</i></a>
-
-                      </div>
-
                       
                 </div>
                 </div>

@@ -62,13 +62,13 @@
             <div class="user-info-block">
                 <div class="user-heading">
                     <h3><?php echo $student_detail->student_name; ?></h3>
-                     <strong>Roll No : <?php echo $student_detail->student_roll_no; ?><br />Standard : <?php echo $student_detail->standard_title; ?></strong>
+                     <strong><br />Standar : <?php echo $student_detail->standard_title; ?></strong>
                 </div>
               
                  
                 <div class="box-header">
                  <div class="fancy">
-                 <strong>Student Growth : </strong>
+                 <strong>Perkembangan Siswa : </strong>
                  
                   <table class="table">
     
@@ -81,7 +81,7 @@
                         <td><?php echo $growth->growth."(".$growth->percentage."%)"; ?></td>
                       </tr>
                        <?php }  ?>
-                       <a href="<?php echo site_url("growth/manage_growth/".$student_detail->student_id); ?>" class="non-print"> add growth</a> 
+                       <a href="<?php echo site_url("growth/manage_growth/".$student_detail->student_id); ?>" class="non-print"> Tambah Perkembangan</a> 
                      
                     </tbody>
                   </table>
@@ -89,35 +89,35 @@
                 
             </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                <h4>Personam Information</h4>
+                <h4>Informasi Pribadi</h4>
                   <table class="table">
     
                     <tbody>
                       <tr class="success">
-                         <td>Address : </td>
+                         <td>Alamat : </td>
                         <td><?php echo $student_detail->student_address; ?></td>
                         
                       </tr>
                        <tr class="info">
-                        <td>City :</td>
+                        <td>Kota :</td>
                         <td><?php echo $student_detail->student_city; ?></td>
                       </tr>
                       <tr class="danger">
-                      <td>Birht Date :</td>
+                      <td>Tanggal Lahir :</td>
                         <td><?php echo $student_detail->student_birthdate; ?> (Like: yyyy/mm/dd)</td>
                       </tr>
                      <tr class="success">
-                      <td>Student Phone :</td>
+                      <td>No Telp:</td>
                         <td><?php echo $student_detail->student_phone; ?> </td>
                       </tr>
                       
                         <tr class="info">
-                      <td>Student Parent Phone :</td>
+                      <td>No Telp Orang Tua :</td>
                         <td><?php if($student_detail->student_parent_phone!=""){ echo $student_detail->student_parent_phone; } else{ echo "data not available";}?>  </td>
                       </tr>
                       
                        <tr class="info">
-                      <td>Student Email :</td>
+                      <td>Email :</td>
                         <td><?php if($student_detail->student_email!=""){ echo $student_detail->student_email; } else{ echo "data not available";}?> </td>
                       </tr>
                     </tbody>
@@ -125,7 +125,7 @@
                   <!-- <strong>Note*: Please Update Student Detail to Display All Data</strong> -->
                 </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
-                  <h4>School Information</h4>
+                  <h4> &nbsp</h4>
                   <table class="table">
     
                     <tbody>
@@ -201,14 +201,6 @@
                       </tr> 
                     </tbody>
                   </table>
-                      <strong>Note*: Salin ke History untuk memindah data siswa ke menu history siswa</strong>
-                      <br/>
-                      <br/>
-                      <hr/>
-                      <div class="pull-left">
-                        <a href="<?php echo site_url("student/copy_student/".$student_detail->student_id); ?>" class="btn btn-primary"><i class="fa fa-copy"> Salin ke History</i></a>
-
-                      </div>
 
                       
                 </div>

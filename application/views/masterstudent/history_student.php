@@ -38,7 +38,7 @@
                                         </select>
                 </div>
                 <div class="col-md-4">
-                 <a href="<?php echo site_url("student/history_student"); ?>" class="btn btn-primary pull-right">Bersihkan Filter</a>
+                 <a href="<?php echo site_url("masterstudent/history_student"); ?>" class="btn btn-primary pull-right">Bersihkan Filter</a>
                 </div>                       
                                         
             </div>
@@ -88,7 +88,7 @@
                     <form method="post">
                        <td><?php echo $students->student_id; ?></td>
                         <td>
-                        <?php echo anchor('student/history_student/'.$students->student_id, $students->student_name, 'title="History Student"'); ?></td>
+                        <?php echo $students->student_name; ?></td>
                         <td><?php echo $students->standard_title; ?></td>
                         <td><?php echo $students->year; ?></td>
                       <!--  <td><?php //echo $students->student_roll_no; ?></td> -->
@@ -181,7 +181,7 @@
                                          }
             $.ajax({
               method: "POST",
-              url: "<?php echo site_url("student/change_status"); ?>",
+              url: "<?php echo site_url("masterstudent/change_status"); ?>",
               data: { table: table, status: status, id : id, id_field : id_field, on_off : bin }
             })
               .done(function( msg ) {
@@ -222,7 +222,7 @@ function choose_standard_type() {
     var val = document.getElementById("standard_type").value;
     url_segment.standard = val;
     var join_url =join_url_segment(url_segment);
-    window.location = "<?php echo site_url("student/history_student");?>?"+join_url;
+    window.location = "<?php echo site_url("masterstudent/history_student");?>?"+join_url;
 }
 
 function join_url_segment(g_array){

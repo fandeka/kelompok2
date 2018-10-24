@@ -74,9 +74,9 @@
                        <th>Alamat</th>
                       <th>Telepon</th>
                       <th>Perkembangan</th>
-                      <th>Status</th>
+<!--                       <th>Status</th>
                         <th width="80">Aksi</th>
-                      </tr>
+                      </tr> -->
                     </thead>
                     <tbody>
                 <?php foreach($student as $students){
@@ -101,8 +101,8 @@
     <label class='tgl-btn' for='cb_<?php echo $students->student_id; ?>'></label></td>
                         <td>
                             
-                            <a href="<?php echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                            <a href="<?php echo site_url("student/delete_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+<!--                             <a href="<?php // echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                            <a href="<?php // echo site_url("student/delete_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a> -->
                         </td>
                         </form>
                     </tr>

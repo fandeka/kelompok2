@@ -387,7 +387,7 @@ public function master_student_print(){
             $this->load->model("growth_model");
              $data["student_growth"] = $this->growth_model->get_school_standard_student_growth($student_id);
           
-            $this->load->view("student/student_detail",$data);
+            $this->load->view("masterstudent/master_student_detail",$data);
         }
     }
      function delete_master_student($student_id){
@@ -410,23 +410,27 @@ public function master_student_print(){
 
         if(_is_user_login($this)){
            // $data = array();
-            
-          $filter = array();   
+   
+          $filter = array(); 
+
            if(isset($_GET['standard'])){
                 $filter['student_standard'] = $_GET['standard'];
+
             }
             $this->load->model("student_model");
+
             $data["history_student"] = $this->student_model->get_history_student($filter);
+
             
             /* get school standard */
            $this->load->model("standard_model");
-          $data["school_standard"] = $this->standard_model->get_school_standard();
+
+          $data["school_standard"] = $this->standard_model->get_school_standard_by_admin();
+
 
 
           // print("<pre>".print_r($data["history_student"],true)."</pre>"); die();
-
-
-           $this->load->view("master_student/history_student",$data);
+           $this->load->view("masterstudent/history_student",$data);
         }
     }
 
@@ -534,7 +538,6 @@ public function master_student_print(){
                     // print("<pre>".print_r($data_prev,true)."</pre>"); die();
             }
 
-            // print("<pre>".print_r($data,true)."</pre>"); die();
              
              $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
                                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

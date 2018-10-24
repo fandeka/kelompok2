@@ -59,17 +59,6 @@
                                         <label for="student_birthdate">Tanggal Lahir <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="student_birthdate" name="student_birthdate" placeholder="Show Date" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask value="<?php echo $student->student_birthdate; ?>">
                                     </div>
-                                  <!--    <div class="col-md-6">
-                                        <label for="student_roll_no">Student Roll No <span class="red">*</span></label>
-                                        <input type="text" class="form-control" id="student_roll_no" name="student_roll_no" value="<?php //echo $student->student_roll_no; ?>"/>
-                                    </div> -->
-
-                                    <div class="col-md-6">
-                                      <br>
-                                      <label><strong>Note*: Salin ke History untuk memindah data siswa ke menu history siswa sebelum merubah standard</strong></label>
-                          
-                                      <a href="<?php echo site_url("student/copy_student/".$student->student_id); ?>" class="btn btn-primary"><i class="fa fa-copy"> Salin ke History</i></a>
-                                    </div>
                                      <div class="col-md-6">
                                         <label for="student_standard">Standar <span class="red">*</span></label>
                                         <select class="form-control select2" name="student_standard" id="student_standard" style="width: 100%;">
