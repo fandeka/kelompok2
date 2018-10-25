@@ -282,7 +282,7 @@ public function master_student_excel_download(){
         $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'ID')
                     ->setCellValue('B1', 'Nama Siswa')
-                    ->setCellValue('C1', '')
+                    ->setCellValue('C1', 'Tahun')
                     ->setCellValue('D1', 'Standar')
                     ->setCellValue('E1', 'Tanggal Lahir')
                     ->setCellValue('F1', 'Alamat')
@@ -296,15 +296,17 @@ public function master_student_excel_download(){
                     ->setCellValue('N1', 'Jabatan')
                     ->setCellValue('O1', 'Matra');
  
-        $q = $this->db->query("select student_detail.*, standard.standard_title from student_detail 
+        $q = $this->db->query("select student_detail.*, standard.standard_title, standard.year from student_detail 
                                                                         inner join standard on standard.standard_id = student_detail.student_standard ");
                                                                         $stud_item = $q->result();
                                                                        
         $row_index = 2;
+        // print("<pre>".print_r($stud_item,true)."</pre>"); die();
+
             foreach($stud_item as $item){
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row_index, $item->student_id)
                                                                 ->setCellValue('B'.$row_index, $item->student_name)
-                                                                ->setCellValue('C'.$row_index, null)
+                                                                ->setCellValue('C'.$row_index, $item->year)
                                                                 ->setCellValue('D'.$row_index, $item->standard_title)
                                                                 ->setCellValue('E'.$row_index, $item->student_birthdate)
                                                                 ->setCellValue('F'.$row_index, $item->student_address)
@@ -322,8 +324,8 @@ public function master_student_excel_download(){
                                                             }
                                                             
 
-                $objPHPExcel->setActiveSheetIndex(0)->getStyle('A1:I1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-                $objPHPExcel->getActiveSheet()->getStyle('A1:I1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('E5E5E5');
+                $objPHPExcel->setActiveSheetIndex(0)->getStyle('A1:O1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $objPHPExcel->getActiveSheet()->getStyle('A1:O1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('E5E5E5');
 
                 for($i = 1 ; $i <= $row_index ; $i++){
                     for($j = 'A' ; $j <= 'O' ; $j++){
