@@ -23,17 +23,25 @@
                     <thead>
                       <tr>
                        <th>ID</th> 
-                        <th>Student Name</th>
-                         <th>Standard</th>
-                        <th>Student Roll No</th>
-                        <th>Birthdate</th>
-                        <th>Student Address</th>
-                        <th>Student City</th>
-                      <th>Student Phone</th>
-                      <th>Student Parent Phone</th>
+                        <th>Nama</th>
+                         <th>Standar</th>
+    <!--                     <th>Student Roll No</th> -->
+                        <th>Tanggal Lahir</th>
+                        <th>Alamat</th>
+                        <th>Kota</th>
+                      <th>Telp</th>
+                      <th>Telp Orang Tua</th>
+                      <th>Email</th>
+                      <th>Pangkat</th>
+                      <th>Korp</th>
+                      <th>NRP</th>
+                      <th>Kesatuan</th>
+                      <th>Jabatan</th>
+                      <th>Matra</th>
                       </tr>
                     </thead>
                     <tbody>
+
                 <?php foreach($student as $students){
                     ?>
                     <tr>
@@ -44,12 +52,19 @@
                         </td>
                         <td><?php echo $students->standard_title; ?>
                       </td>
-                        <td><?php echo $students->student_roll_no; ?></td>
+   <!--                      <td><?php //echo $students->student_roll_no; ?></td> -->
                         <td><?php echo $students->student_birthdate; ?></td>
                         <td><?php echo $students->student_address; ?></td>
                         <td><?php echo $students->student_city; ?>
                         <td><?php echo $students->student_phone; ?></td>
-                        <td><?php echo $students->student_parent_phone; ?>
+                        <td><?php echo $students->student_parent_phone; ?></td>
+                        <td><?php echo $students->student_email; ?></td>
+                        <td><?php echo $students->pangkat; ?></td>
+                        <td><?php echo $students->korp; ?></td>
+                        <td><?php echo $students->nrp; ?></td>
+                        <td><?php echo $students->kesatuan; ?></td>
+                        <td><?php echo $students->jabatan; ?></td>
+                        <td><?php echo $students->matra; ?></td>
                         </form>
                     </tr>
                     <?php
