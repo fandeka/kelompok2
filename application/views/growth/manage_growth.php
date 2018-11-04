@@ -13,12 +13,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Student Growth
-            <small>Manage Growth</small>
+            Perkembangan Siswa
+            <small>Kelola Perkembangan</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Growth</a></li>
-            <li class="active">Manage Student Growth</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Perkembangan</a></li>
+            <li class="active">Kelola Perkembangan Siswa</li>
           </ol>
         </section>
 
@@ -31,7 +31,7 @@
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header">
-                           <p><strong>Add Student Growth (Ex. 1-25=bad,26-50=medium, 51-75=good, 76-100=excellent)</strong></p>
+                           <p><strong>Tambah Perkembangan Siswa (Ex. 1-25=bad,26-50=medium, 51-75=good, 76-100=excellent)</strong></p>
                         </div>
                         <div class="box-body">
                         
@@ -47,17 +47,17 @@
                                     <div class="row">
                                     <input type="hidden" name="student_id" value="<?php echo $student->student_id; ?>"/>
                                     <input type="hidden" name="standard_id" value="<?php echo $student->student_standard; ?>"/>
-                                   <p style="padding-left: 10px; border: 1px solid black;"> <strong>Add Student Growth for : <?php echo $student->student_name; ?></strong></p>
+                                   <p style="padding-left: 10px; border: 1px solid black;"> <strong>Tambah Perkembangan Siswa untuk : <?php echo $student->student_name; ?></strong></p>
                                       <!--<div class="col-md-12">
                                         <label for="growth_title">Growth Title <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="growth_title" name="growth_title" placeholder="Ex. Good, Average, etc" />
                                     </div> -->
                                      <div class="col-md-12">
-                                        <label for="growth_per">Growth Percentage <span class="red">*</span></label>
+                                        <label for="growth_per">Presentasi Perkembangan <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="growth_per" name="growth_per" placeholder="Ex. 20, 40, 50, 60, 80, etc (only no)" />
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="month">Select Growth Month <span class="red">*</span></label>
+                                        <label for="month">Pilih Bulan Perkembangan <span class="red">*</span></label>
                                         <select name="month" class="form-control select2"> 
                                             <?php foreach($this->config->item("growth") as $month){ ?>
                                             <option value="<?php echo $month; ?>"><?php echo $month; ?></option>
@@ -72,8 +72,8 @@
                               </div><!-- /.box-body -->
             
                               <div class="box-footer">
-                                <button type="submit" name="savegrowth" class="btn btn-primary">Add Growth</button>
-                                <a href="javascript:window.history.go(-1);" class="btn btn-info">Back</a>
+                                <button type="submit" name="savegrowth" class="btn btn-primary">Tambah Perkembangan</button>
+                                <a href="javascript:window.history.go(-1);" class="btn btn-info">Kembali</a>
                               </div>
                             </form>
                         </div>

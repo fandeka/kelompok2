@@ -41,9 +41,9 @@
                     <div class="box">
                         <div class="box-header">
                            <p style="padding-left: 10px; border: 1px solid black; font-size: 18px;"> 
-                           <strong>Exam Name : <?php echo $exam->exam_title; ?></strong><br />
-                           <strong>Exam Date :  <?php echo $exam->exam_date; ?></strong><br />
-                           <strong>Standard Name :  <?php echo $exam->standard_title; ?></strong>
+                           <strong>Subjek : <?php echo $exam->exam_title; ?></strong><br />
+                           <strong>Tanggal :  <?php echo $exam->exam_date; ?></strong><br />
+                           <strong>Nama Standar :  <?php echo $exam->standard_title; ?></strong>
                            </p>
                         </div>
                         <div class="box-body">

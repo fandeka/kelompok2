@@ -67,7 +67,7 @@ class Examresult extends CI_Controller {
             
                             $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
                                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                  <strong>Success!</strong> Student Mark Added Successfully
+                                  <strong>Success!</strong> Nilai sukses ditambahkan
                                 </div>');
                                 $currenturl = current_url();
                              redirect($currenturl);   
@@ -105,7 +105,7 @@ class Examresult extends CI_Controller {
             
                             $this->session->set_flashdata("message", '<div class="alert alert-success alert-dismissible" role="alert">
                                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                  <strong>Success!</strong> Student Mark Update Successfully
+                                  <strong>Success!</strong> Nilai sukses diperbarui
                                 </div>');
                           
                              $currenturl = current_url();
