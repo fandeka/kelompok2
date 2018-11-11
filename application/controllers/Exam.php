@@ -121,9 +121,219 @@ class Exam extends CI_Controller {
                 redirect("exam/manage_exam");
     
     }
+
+
+function download_nilai(){
+        if(_is_user_login($this)){  
+            error_reporting(E_ALL);
+            ini_set('display_errors', TRUE);
+            ini_set('display_startup_errors', TRUE);
+            date_default_timezone_set('Europe/London');
+             $this->load->library('PHPExcel');
+            if (PHP_SAPI == 'cli')
+                die('This example should only be run from a Web Browser');
+            // Create new PHPExcel object
+            $objPHPExcel = new PHPExcel();
+    
+            // Set document properties
+            $objPHPExcel->getProperties()->setCreator("elearning")
+                                         ->setLastModifiedBy("elearning")
+                                         ->setTitle("Office 2007 XLSX Test Document")
+                                         ->setSubject("Office 2007 XLSX Test Document")
+                                         ->setDescription("Daftar Siswa")
+                                         ->setKeywords("office 2007 openxml php")
+                                         ->setCategory("elearning");
+    
+            //$objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:G1');
+            // Add some data
+            $objPHPExcel->setActiveSheetIndex(0)
+                        ->setCellValue('A2', 'No')
+                        ->setCellValue('B2', 'Nama Siswa')
+                        ->setCellValue('C2', 'Tahun')
+                        ->setCellValue('D2', 'Standar')
+                        ->setCellValue('E2', 'Tanggal Lahir')
+                        ->setCellValue('F2', 'Alamat')
+                        ->setCellValue('G2', 'Kota')
+                        ->setCellValue('H2', 'No Telp')
+                        ->setCellValue('I2', 'Telp Orang Tua')
+                        ->setCellValue('J2', 'Pangkat')
+                        ->setCellValue('K2', 'Korp')
+                        ->setCellValue('L2', 'NRP')
+                        ->setCellValue('M2', 'Kesatuan')
+                        ->setCellValue('N2', 'Jabatan')
+                        ->setCellValue('O2', 'Matra');
+
+            $this->load->model("exam_model");
+            $query_judul = $this->exam_model->get_school_exam_order();
+
+
+             $indexkoe = 'P';
+            // // // $damn = 'A';
+            // // // $rowin = 2;
+             foreach ($query_judul as $query_item ) {
+              
+            //    // print("<pre>".print_r($query_item->exam_id,true)."</pre>");
+            //    // print("<pre>".print_r($query_item->exam_title,true)."</pre>");
+
+                $this->load->model("exam_model");
+            //    $query_exam_result = $this->exam_model->get_exam_result_by_exam_id($query_item->exam_id,$query_item->school_id);
+
+            //    // $this->load->model("student_model");
+            //    // $query_student = $this->student_model->get_school_student_by_id($query_exam_result->student_id);
+
+
+               
+
+            //       // print("<pre>".print_r($query_exam_result->total_mark,true)."</pre>"); 
+            //    // print("<pre>".print_r($query_student,true)."</pre>");
+            //    // print("<pre>".print_r($indexku,true)."</pre>");
+
+            //     $total_mark = @$query_exam_result->total_mark;
+
+            //     if(empty($total_mark)){
+            //       $total_mark = 0;
+            //     }
+
+            //     // echo $total_mark;
+            //     // die();
+
+
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue( $indexkoe.'2', $query_item->exam_title);
+
+                      
+
+            //    // $objPHPExcel->setActiveSheetIndex(0)->setCellValue($indexku.'2'.'0', $query_item->exam_titlee);
+
+            //     // $objPHPExcel->setActiveSheetIndex(0)->setCellValue($damn.'2'.'0', $query_student->student_name);
+
+
+
+
+
+                  $indexkoe++;
+            //    // $rowin++;
+            //    // $damn++;
+               
+             }
+
+
+           
+            //   // die();
+
+
+     
+            $q = $this->db->query("select student_detail.*, standard.standard_title, standard.year from student_detail 
+                                                                            inner join standard on standard.standard_id = student_detail.student_standard order by student_detail.student_id");
+                                                                            $stud_item = $q->result();
+
+
+                                                                           
+            
+               
+            
+
+                $this->load->model("examresult_model");
+                $row_index = 3;
+                foreach($stud_item as $item){
+
+
+
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row_index, $item->student_id)
+                                                                    ->setCellValue('B'.$row_index, $item->student_name)
+                                                                    ->setCellValue('C'.$row_index, $item->year)
+                                                                    ->setCellValue('D'.$row_index, $item->standard_title)
+                                                                    ->setCellValue('E'.$row_index, $item->student_birthdate)
+                                                                    ->setCellValue('F'.$row_index, $item->student_address)
+                                                                    ->setCellValue('G'.$row_index, $item->student_city)
+                                                                    ->setCellValue('H'.$row_index, $item->student_phone)
+                                                                    ->setCellValue('I'.$row_index, $item->student_parent_phone)
+                                                                    ->setCellValue('J'.$row_index, $item->pangkat)
+                                                                    ->setCellValue('K'.$row_index, $item->korp)
+                                                                    ->setCellValue('L'.$row_index, $item->nrp)
+                                                                    ->setCellValue('M'.$row_index, $item->kesatuan)
+                                                                    ->setCellValue('N'.$row_index, $item->jabatan)
+                                                                    ->setCellValue('O'.$row_index, $item->matra);
+
+
+
+
+
+
+                          $student_id = intval($item->student_id);
+
+
+                          $indexku = 'P';
+
+                          $query_student = $this->examresult_model->get_exam_result($student_id);
+                          if(!empty($query_student)){
+
+                                foreach ($query_student as $exam_student) {
+
+                                  $subjek = @$exam_student->subject;
+
+                                  $total_mark = @$exam_student->total_mark;
+
+                                 if(empty($total_mark)){
+                                   $total_mark = 0;
+                                  }
+                                  if(empty($subjek)){
+                                   $subjek = 'Subjek';
+                                  }
+                                  $objPHPExcel->setActiveSheetIndex(0)->setCellValue( $indexku.$row_index, @$total_mark);
+
+                                  $indexku++;
+                                  $rowin=$indexku++;
+                                
+                                }
+
+
+                          }
+
+                                                                    
+                      $row_index++;
+                    }
+
+                                                       
+    
+                    $objPHPExcel->setActiveSheetIndex(0)->getStyle('A2:'.$rowin."2")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $objPHPExcel->getActiveSheet()->getStyle('A2:'.$rowin."2")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('E5E5E5');
+    
+                    // for($i = 1 ; $i <= $row_index ; $i++){
+                    //     for($j = 'A' ; $j <= 'O' ; $j++){
+                    //             $objPHPExcel->getActiveSheet()->getStyle($j.$i)->getBorders()->getTop()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+                    //             $objPHPExcel->getActiveSheet()->getStyle($j.$i)->getBorders()->getBottom()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+                    //             $objPHPExcel->getActiveSheet()->getStyle($j.$i)->getBorders()->getLeft()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+                    //             $objPHPExcel->getActiveSheet()->getStyle($j.$i)->getBorders()->getRight()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+                    //         }
+                    //  }
+    
+                        // Rename worksheet
+                    $objPHPExcel->getActiveSheet()->setTitle('Data Siswa');
+    
+    
+                    // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+                    $objPHPExcel->setActiveSheetIndex(0);
+    
+    
+                    // Redirect output to a client�s web browser (Excel2007)
+                    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                    header('Content-Disposition: attachment;filename="DataSiswa.xlsx"');
+                    header('Cache-Control: max-age=0');
+                    // If you're serving to IE 9, then the following may be needed
+                    header('Cache-Control: max-age=1');
+    
+                    // If you're serving to IE over SSL, then the following may be needed
+                    header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+                    header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+                    header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+                    header ('Pragma: public'); // HTTP/1.0
+    
+                    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+                    $objWriter->save('php://output');
+                    exit;            
+                }
+    }
    
- 
-  
 }
 
 ?>

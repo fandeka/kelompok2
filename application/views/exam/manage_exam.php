@@ -89,9 +89,16 @@
                         </div>
                     </div>
                     </div>
-                    <div class="col-md-8">
-                    <div class="box">
+
+                <div class="col-md-8">
+
+                <div class="box">
+
+
                 <div class="box-header">
+                  <a href="<?php  echo site_url("exam/download_nilai"); ?>" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Unduh Excel</a>
+                     
+ 
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
@@ -123,6 +130,7 @@
                 } ?>
                     </tbody>
                 </table>
+  
             </div>
         </div>
                     </div>

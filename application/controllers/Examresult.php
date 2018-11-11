@@ -37,9 +37,9 @@ class Examresult extends CI_Controller {
             if(isset($_REQUEST["saveresult"])){
                 $this->load->library('form_validation');
                 
-                $this->form_validation->set_rules('subject_name', 'Subject Name', 'trim|required');
-                $this->form_validation->set_rules('mark_obtain', 'Mark Obtain', 'trim|required|numeric');
-                $this->form_validation->set_rules('total_mark', 'Total Mark', 'trim|required|numeric');
+                $this->form_validation->set_rules('subject_name', 'Subjek', 'trim|required');
+                // $this->form_validation->set_rules('mark_obtain', 'Mark Obtain', 'trim|required|numeric');
+                $this->form_validation->set_rules('total_mark', 'Nilai', 'trim|required|numeric');
                 
                 if ($this->form_validation->run() == FALSE) 
         		{
@@ -57,7 +57,7 @@ class Examresult extends CI_Controller {
                             "exam_id"=>$this->input->post("exam_id"),
                             "student_id"=>$this->input->post("student_id"),
                             "subject"=>$this->input->post("subject_name"),
-                            "mark_obtain"=>$this->input->post("mark_obtain"),
+                            // "mark_obtain"=>$this->input->post("mark_obtain"),
                             "total_mark"=>$this->input->post("total_mark")
                             
                             );
@@ -79,7 +79,7 @@ class Examresult extends CI_Controller {
                 $this->load->library('form_validation');
                 
                 $this->form_validation->set_rules('subject_name', 'Subject Name', 'trim|required');
-                $this->form_validation->set_rules('mark_obtain', 'Mark Obtain', 'trim|required|numeric');
+                // $this->form_validation->set_rules('mark_obtain', 'Mark Obtain', 'trim|required|numeric');
                 $this->form_validation->set_rules('total_mark', 'Total Mark', 'trim|required|numeric');
                 
                 if ($this->form_validation->run() == FALSE) 
@@ -96,7 +96,7 @@ class Examresult extends CI_Controller {
                        
                         $data = array(
                              "subject"=>$this->input->post("subject_name"),
-                            "mark_obtain"=>$this->input->post("mark_obtain"),
+                            // "mark_obtain"=>$this->input->post("mark_obtain"),
                             "total_mark"=>$this->input->post("total_mark")
                             
                             );

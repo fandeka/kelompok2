@@ -89,6 +89,7 @@
                      <div class="col-md-6">
                      
                     <div class="box">
+                        <?php if(empty($studentmark)){?>
                         <div class="box-header non-print">
                            <p><strong>Tambah Nilai</strong></p>
                         </div>
@@ -99,9 +100,7 @@
                               <?php 
                                 echo $this->session->flashdata("message");
                                ?>
-                                <? if(isset($error)){
-                            echo $error;
-                        } ?>
+                                <?php if(isset($error)){echo $error;} ?>
                                 <div class="form-group non-print">
                                     <div class="row">
                                    
@@ -113,15 +112,16 @@
                                       
                                       <div class="col-md-12">
                                         <label for="subject_name">Subjek <span class="red">*</span></label>
-                                        <input type="text" class="form-control" id="subject_name" name="subject_name" placeholder= "Android, Matematika, etc" />
+                                        <input type="text" class="form-control" id="subject_name"  placeholder= "Android, Matematika, etc" disabled value="<?php echo $exam->exam_title; ?>"/>
+                                        <input type="hidden" name="subject_name" value="<?php echo $exam->exam_title; ?>"/>
                                     </div>
-                                     <div class="col-md-12">
+<!--                                      <div class="col-md-12">
                                         <label for="mark_obtain">Perolehan <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="mark_obtain" name="mark_obtain" placeholder="Di luar Total Nilai" />
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-12">
-                                        <label for="total_mark">Total Nilai <span class="red">*</span></label>
-                                        <input type="text" class="form-control" id="total_mark" name="total_mark" placeholder="Total Nilai" />
+                                        <label for="total_mark">Nilai <span class="red">*</span></label>
+                                        <input type="text" class="form-control" id="total_mark" name="total_mark" placeholder="Nilai" />
                                     </div>
                                  
                                     
@@ -135,18 +135,25 @@
                               </div>
                             </form>
                         </div>
+                        
+                        <?php } ?>
+
                         <div class="">
                         <p style="padding-left: 10px; border: 1px solid black;"> <strong>Nama Ujian: <?php echo $exam->exam_title; ?></strong><br />
                            <strong>Tanggal Ujian :  <?php echo $exam->exam_date; ?></strong><br />
                            <strong>Standar:  <?php echo $exam->standard_title; ?></strong><br /> <strong>Nama Siswa/Peserta : <?php echo $studentdata->student_name; ?></strong> <div class="pull-right">
          <input type="button" value="Cetak" onclick="window.print()" class="btn btn-primary non-print" />
         </div></p>
-                          <table id="example2" class="table table-bordered table-hover display">
+                    
+
+
+
+                    <table id="example2" class="table table-bordered table-hover display">
                     <thead>
                       <tr>
                         <th>Subjek</th>
-                        <th>Perolehan</th>
-                        <th>Total Nilai</th>
+                        <!-- <th>Perolehan</th> -->
+                        <th>Nilai</th>
                         <th class="non-print">Aksi</th>
                         </tr>
                     </thead>
@@ -159,8 +166,8 @@
                     <form method="post">
                      
                     <input type="hidden" name="result_id" value="<?php echo $studentmarks->exam_result_id; ?>"/>
-                        <td><input type="text" name="subject_name" value="<?php echo $studentmarks->subject; ?>"/></td>
-                        <td><input type="text" name="mark_obtain" value="<?php echo $studentmarks->mark_obtain; ?>" size="5"/></td>
+                        <td><input type="text" name="subject_name" value="<?php echo $studentmarks->subject; ?>"/ disabled></td>
+                        <!-- <td><input type="text" name="mark_obtain" value="<?php //echo $studentmarks->mark_obtain; ?>" size="5"/></td> -->
                         <td><input type="text" name="total_mark" value="<?php echo $studentmarks->total_mark; ?>" size="5"/></td>
                         <td><input type="submit" name="updatemark" value="Perbarui" class="btn btn-primary non-print"/>
                         <a href="<?php echo site_url("examresult/delete_examresult/".$studentmarks->exam_result_id); ?>" onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger non-print"><i class="fa fa-remove"></i></a>
@@ -168,7 +175,8 @@
                     </form>    
                     </tr>
                     <?php
-                } ?>
+                } 
+                ?>
                     </tbody>
                 </table>
                         </div>
