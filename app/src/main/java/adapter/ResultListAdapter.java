@@ -33,6 +33,7 @@ public class ResultListAdapter extends BaseAdapter {
     CommonClass common;
     private JSONArray postItems;
     public static float sum_total_marks, sum_obtain_marks;
+    public static float total_marks;
 
     LayoutInflater inflater;
     public ResultListAdapter(Activity con, JSONArray array, String exam_id){
@@ -40,6 +41,7 @@ public class ResultListAdapter extends BaseAdapter {
 postItems = array;
         sum_obtain_marks = 0;
         sum_total_marks = 0;
+        total_marks = 0;
         common = new CommonClass(con);
         inflater = LayoutInflater.from(context);
         new getResultTask().execute(exam_id);
@@ -95,13 +97,13 @@ postItems = array;
 
         convertView= inflater.inflate(R.layout.row_of_result_list, null);
         TextView subject = (TextView)convertView.findViewById(R.id.subject);
-        TextView obtain_mark = (TextView)convertView.findViewById(R.id.obtain_marks);
+        //TextView obtain_mark = (TextView)convertView.findViewById(R.id.obtain_marks);
         TextView total_mark = (TextView)convertView.findViewById(R.id.total_marks);
 
         try {
             JSONObject obj = postItems.getJSONObject(position);
             subject.setText(obj.getString("subject"));
-            obtain_mark.setText(obj.getString("mark_obtain"));
+            //obtain_mark.setText(obj.getString("mark_obtain"));
             total_mark.setText(obj.getString("total_mark"));
            } catch (JSONException e) {
             e.printStackTrace();
@@ -170,5 +172,23 @@ postItems = array;
         @Override
         protected void onCancelled() {
         }
+    }
+
+
+
+
+    public  float get_total_marks(){
+
+            JSONObject obj = null;
+            try {
+                obj = postItems.getJSONObject(1);
+                //sum_obtain_marks = sum_obtain_marks + Float.valueOf(obj.getString("mark_obtain"));
+                total_marks =  Float.valueOf(obj.getString("total_mark"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        return this.total_marks;
     }
 }

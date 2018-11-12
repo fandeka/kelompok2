@@ -58,14 +58,14 @@
 
 
     </LinearLayout>
-                <TextView
-                    android:id="@+id/percentage"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="24dp"
-                    android:textColor="#e5e5e5"
-                    android:textStyle="bold"
-                    android:text="@string/content_result_list_perstage" />
+                <!--<TextView-->
+                    <!--android:id="@+id/percentage"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="24dp"-->
+                    <!--android:textColor="#e5e5e5"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:text="@string/content_result_list_perstage" />-->
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -83,10 +83,10 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/content_result_list_marks"/>
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="@string/content_result_list_obtain"/>
+        <!--<TextView-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/content_result_list_obtain"/>-->
 
     </LinearLayout>
 

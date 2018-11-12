@@ -5,27 +5,25 @@
     android:padding="10dp"
     android:orientation="horizontal"
     android:background="#e5e5e5">
-    <TextView
+<!--     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="@string/content_result_list_total_marks"
         android:textStyle="bold"
-        android:textColor="#000"
-
-        />
-    <TextView
+        android:textColor="#000"/> -->
+ <!--    <TextView
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="@string/content_result_list_marks"
         android:textStyle="bold"
         android:textColor="#000"
-        android:id="@+id/sum_total_marks"/>
-    <TextView
+        android:id="@+id/sum_total_marks"/> -->
+<!--     <TextView
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="@string/content_result_list_obtain"
         android:textStyle="bold"
         android:textColor="#000"
-        android:id="@+id/sum_obtain_marks"/>
+        android:id="@+id/sum_obtain_marks"/> -->
 </LinearLayout>

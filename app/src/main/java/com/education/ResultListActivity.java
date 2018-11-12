@@ -37,21 +37,25 @@ ListView listview = (ListView)findViewById(R.id.listview);
 listview.setAdapter(adapter);
         LayoutInflater inflaterFooter = this.getLayoutInflater();
         View footerview = inflaterFooter.inflate(R.layout.row_of_result_footer, null);
-        final TextView sum_totla_marks = (TextView) footerview.findViewById(R.id.sum_total_marks);
-        final TextView sum_obtain_mark = (TextView) footerview.findViewById(R.id.sum_obtain_marks);
-        final TextView txtpercentage = (TextView) findViewById(R.id.percentage);
+        //final TextView sum_totla_marks = (TextView) footerview.findViewById(R.id.sum_total_marks);
+        //final TextView sum_obtain_mark = (TextView) footerview.findViewById(R.id.sum_obtain_marks);
+//        final TextView txtpercentage = (TextView) findViewById(R.id.percentage);
         listview.addFooterView(footerview);
 
         listview.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-float obtain = adapter.getSum_obtain_marks();
+                //float obtain = adapter.getSum_obtain_marks();
                 float total = adapter.getSum_total_marks();
-                sum_obtain_mark.setText(String.valueOf(obtain));
-                sum_totla_marks.setText(String.valueOf(total));
+                //sum_obtain_mark.setText(String.valueOf(obtain));
+                //sum_totla_marks.setText(String.valueOf(total));
 
-                float average = obtain * 100 / total;
-                txtpercentage.setText(String.valueOf(average)+"%");
+               // float average = obtain * 100 / total;
+
+                float ttoal = adapter.get_total_marks();
+                float average = ttoal;
+
+//                txtpercentage.setText(String.valueOf(average)+"");
 
 
             }

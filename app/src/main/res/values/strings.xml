@@ -64,9 +64,9 @@
     <string name="content_result_list_exam_title">Nama Ujian</string>
     <string name="content_result_list_date">01/12/2016</string>
     <string name="content_result_list_subject">Subjek</string>
-    <string name="content_result_list_total_marks">Total Nilai</string>
+<!--     <string name="content_result_list_total_marks">Total Nilai</string> -->
     <string name="content_result_list_marks">Nilai</string>
-    <string name="content_result_list_obtain">Perolehan</string>
+<!--     <string name="content_result_list_obtain">Perolehan</string> -->
     <string name="content_result_list_perstage">50%</string>
     <string name="dialog_attend_note_attendance_note">Catatan Kehadiran</string>
     <string name="dialog_enquiry_message">Pesan Pertanyaan</string>
