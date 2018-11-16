@@ -64,34 +64,37 @@
                 <table id="example2" class="example table table-bordered table-hover display">
                     <thead>
                       <tr>
-                       <th>ID</th> 
+                       <th>No</th> 
                         <th>Nama</th>
-                         <th>Standar</th>
+                        <th>Pangkat</th>
+                        <th>Korp</th>
+                        <th>Kesatuan</th>
+                        <th>Jabatan</th>
+                        <th>Pelatihan</th>
                         <th>Username</th>
                         <th>Password</th>
-                        
-                       <th>Alamat</th>
-                      <th>Telepon</th>
-                      <th>Status</th>
-                      <th width="100">Aksi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                       <th>Salin</th>
                       </tr>
                     </thead>
                     <tbody>
+                <?php $no=1; ?>
                 <?php foreach($student as $students){
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $students->student_id; ?>
+                       <td><?php echo $no++ ?>
                         <td>
-                        <?php echo anchor('masterstudent/master_student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); ?>
+                        <?php echo anchor('masterstudent/master_student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); echo " / "; echo $students->nrp; ?>
                         </td>
-                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?>
-                      </td>
+                        <td><?php echo $students->pangkat; ?></td>
+                        <td><?php echo $students->korp; ?></td>
+                        <td><?php echo $students->kesatuan; echo ' / '; echo $students->matra; ?></td>
+                        <td><?php echo $students->jabatan; ?></td>
+                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?></td>
                         <td><?php echo $students->student_user_name; ?></td>
                         <td><?php echo $password = $students->student_orgpassword; ?></td>
-                        <td><?php echo $students->student_address; ?></td>
-                        <td><?php echo $students->student_phone; ?></td>
                          <td><input class='tgl tgl-ios tgl_checkbox' data-table="student_detail" data-status="student_status" data-idfield="student_id"  data-id="<?php echo $students->student_id; ?>" id='cb_<?php echo $students->student_id; ?>' type='checkbox' <?php echo ($students->student_status==1)? "checked" : ""; ?> />
     <label class='tgl-btn' for='cb_<?php echo $students->student_id; ?>'></label></td>
                         <td>

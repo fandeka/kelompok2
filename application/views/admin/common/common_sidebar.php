@@ -36,7 +36,7 @@
 
             <li>
               <a href="<?php echo site_url("standard/manage_standard"); ?>">
-                <i class="fa fa-tasks "></i> <span>Kelola Standar</span> <small class="label pull-right bg-green"></small>
+                <i class="fa fa-tasks "></i> <span>Kelola Pelatihan</span> <small class="label pull-right bg-green"></small>
               </a>
                
             </li>

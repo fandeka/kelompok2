@@ -66,7 +66,7 @@
                                 </div>
                                    </div> 
                                     <div class="col-md-12">
-                                        <label for="standard">Standar <span class="red">*</span></label>
+                                        <label for="standard">Pelatihan <span class="red">*</span></label>
                                         <select class="form-control select2" name="standard" id="standard" style="width: 100%;">
                                             <?php foreach($school_standard as $standard){
                                                 ?>
@@ -106,7 +106,7 @@
                         <th>Judul</th>
                         <th>Deskripsi</th>
                         <th>Tanggal Ujian</th>
-                        <th>Standar</th>
+                        <th>Pelatihan</th>
                         <th>Hasil</th>
                         <th width="80">Aksi</th>
                       </tr>

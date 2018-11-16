@@ -13,12 +13,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Standar
-            <small>Kelola Standar</small>
+            Pelatihan
+            <small>Kelola Pelatihan</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Standar</a></li>
-            <li class="active">Kelola Standar</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Pelatihan</a></li>
+            <li class="active">Kelola Pelatihan</li>
           </ol>
         </section>
 
@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                     <div class="box">
                         <div class="box-header">
-                           <p><strong>Tambah Standar</strong></p>
+                           <p><strong>Tambah Pelatihan</strong></p>
                         </div>
                         <div class="box-body">
                         
@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                     <div class="col-md-12">
-                                        <label for="student_class">id Nama Kelas <span class="red">*</span></label>
+                                        <label for="student_class">Nama Kelas <span class="red">*</span></label>
                                         <select class="form-control select2" name="school_id" id="school_id" style="width: 100%;">
                                             <?php foreach($school_data as $school){
                                                 ?>
@@ -57,12 +57,12 @@
                                     </div>
                                    
                                       <div class="col-md-12">
-                                        <label for="user_fullname">Nama Standar <span class="red">*</span></label>
+                                        <label for="user_fullname">Nama Pelatihan <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="standard_title" name="standard_title" placeholder="Ex. 1, 2, L.K.G, Android, etc" />
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="year">Tahun Standar <span class="red">*</span></label>
+                                        <label for="year">Tahun Pelatihan <span class="red">*</span></label>
                                         <input type="text" class="form-control" id="year" name="year" placeholder="Tahun" data-inputmask="'alias': 'yyyy'" data-mask value="<?php if(isset($_REQUEST["year"])){echo $_REQUEST["year"]; } ?>">
                                     </div>
 
@@ -88,8 +88,8 @@
                       <tr>
                         <th>ID</th>
                         <th>Nama Kelas</th>
-                        <th>Nama Standar</th>
-                        <th>Tahun Standar</th>
+                        <th>Nama Pelatihan</th>
+                        <th>Tahun Pelatihan*</th>
                         <th width="80">Aksi</th>
                       </tr>
                     </thead>

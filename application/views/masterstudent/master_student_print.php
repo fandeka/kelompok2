@@ -30,44 +30,36 @@
             <table id="example2" class="example table table-bordered table-hover display" >
                     <thead>
                       <tr>
-                       <th>ID</th> 
-                        <th>Nama Siswa</th>
-                         <th>Standar</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>Kota</th>
-                      <th>Telp</th>
-                      <th>Telp Orang Tua</th>
+                       <th>No</th> 
+                      <th>Nama Siswa</th>
+                      <th>Tanggal Lahir</th>
                       <th>Pangkat</th>
                       <th>Korp</th>
                       <th>NRP</th>
                       <th>Kesatuan</th>
                       <th>Jabatan</th>
                       <th>Matra</th>
+                      <th>Pelatihan</th>
                       </tr>
                     </thead>
                     <tbody>
+                <?php $no=1; ?>
                 <?php foreach($student as $students){
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $students->student_id; ?></td>
+                       <td><?php echo $no++;?></td>
                         <td>
                         <?php echo $students->student_name; ?>
                         </td>
-                        <td><?php echo $students->standard_title; echo $students->year; ?>
-                      </td>
                         <td><?php echo $students->student_birthdate; ?></td>
-                        <td><?php echo $students->student_address; ?></td>
-                        <td><?php echo $students->student_city; ?> </td>
-                        <td><?php echo $students->student_phone; ?></td>
-                        <td><?php echo $students->student_parent_phone; ?></td>
                         <td><?php echo $students->pangkat; ?></td>
                         <td><?php echo $students->korp; ?></td>
                         <td><?php echo $students->nrp; ?></td>
                         <td><?php echo $students->kesatuan; ?></td>
                         <td><?php echo $students->jabatan; ?></td>
                         <td><?php echo $students->matra; ?></td>
+                        <td><?php echo $students->standard_title; echo $students->year; ?></td>
 
                         </form>
                     </tr>

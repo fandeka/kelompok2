@@ -64,46 +64,36 @@
                 <table id="example2" class="example table table-bordered table-hover display">
                     <thead>
                       <tr>
-                       <th>ID</th> 
+                       <th>No</th> 
                         <th>Nama</th>
-                         <th>Standar</th>
-                         <th>Tahun Standar</th>
-                       <!-- <th>Student Roll No</th> -->
-                        <th>Username</th>
-                        <th>Password</th>
-                        
-                       <th>Alamat</th>
-                      <th>Telepon</th>
-<!--                       <th>Perkembangan</th>
-                      <th>Status</th >-->
-                        <th width="80">Aksi</th>
+                        <th>Pangkat</th>
+                        <th>Korp</th>
+                        <th>Kesatuan</th>
+                        <th>Jabatan</th>
+                        <th>Matra</th>
+                        <th>Pelatihan</th>
+                        <th>Tahun</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-
+                <?php $no=1; ?>
                 <?php foreach($history_student as $students){
 
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $students->student_id; ?></td>
+                       <td><?php echo $no++ ?></td>
                         <td>
                         <?php echo $students->student_name; ?></td>
-                        <td><?php echo $students->standard_title; ?></td>
+                        <td><?php echo $students->pangkat; ?></td>
+                        <td><?php echo $students->korp; ?></td>
+                        <td><?php echo $students->kesatuan;; ?></td>
+                        <td><?php echo $students->jabatan; ?></td>
+                        <td><?php echo $students->matra; ?></td>
+                        <td><?php echo $students->standard_title;?></td>
                         <td><?php echo $students->year; ?></td>
-                      <!--  <td><?php //echo $students->student_roll_no; ?></td> -->
-                        <td><?php echo $students->student_user_name; ?></td>
-                        <td><?php echo $password = $students->student_orgpassword; ?></td>
-                        <td><?php echo $students->student_address; ?></td>
-                        <td><?php echo $students->student_phone; ?></td>
-<!--                         <td>
-                        <a href="<?php // echo site_url("growth/manage_growth/".$students->student_id); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Set Perkembangan</a>
-                       </td> -->
-<!--                          <td><input class='tgl tgl-ios tgl_checkbox' data-table="student_detail" data-status="student_status" data-idfield="student_id"  data-id="<?php //echo $students->student_id; ?>" id='cb_<?php //echo $students->student_id; ?>' type='checkbox' <?php //echo ($students->student_status==1)? "checked" : ""; ?> />
-    <label class='tgl-btn' for='cb_<?php // echo $students->student_id; ?>'></label></td> -->
                         <td>
-                            
-                            <!-- <a href="<?php // echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a> -->
                             <a href="<?php echo site_url("student/delete_history_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
                         </form>
