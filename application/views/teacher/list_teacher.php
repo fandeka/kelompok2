@@ -64,7 +64,7 @@
                     <td><?php echo substr($teachers->teacher_detail,0,300); ?> </td>
                         <td>
                             
-                            <a href="<?php echo site_url("teacher/edit_teacher/".$teachers->teacher_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                           <!--  <a href="<?php //echo site_url("teacher/edit_teacher/".$teachers->teacher_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a> -->
                             <a href="<?php echo site_url("teacher/delete_teacher/".$teachers->teacher_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
                         </form>

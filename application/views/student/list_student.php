@@ -97,7 +97,7 @@
                     <form method="post">
                        <td><?php echo $no++ ?>
                         <td>
-                        <?php echo anchor('masterstudent/master_student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); ?>
+                        <?php echo anchor('student/student_detail/'.$students->student_id, $students->student_name, 'title="Detail"'); ?>
                         </td>
                         <td><?php echo $students->pangkat; ?></td>
                         <td><?php echo $students->korp; ?></td>

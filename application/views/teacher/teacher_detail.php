@@ -14,12 +14,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header ">
           <h1>
-            Teacher 
-            <small>Teacher Detail</small>
+            Instruktur 
+         
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Teacher</a></li>
-            <li class="active">Teacher Detail</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Instruktur</a></li>
+            
           </ol>
         </section>
 
@@ -48,21 +48,21 @@
               <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">About Me</h3>
+                  <h3 class="box-title">Tentang saya</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
                   <p class="text-muted">
                     <?php echo $teacher_detail->teacher_education; ?>
                   </p>
 
                   <hr>
 
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
                   <p class="text-muted"><?php echo $teacher_detail->teacher_address; ?></p>
 
                   <hr>
-                <strong><i class="fa fa-birthday-cake margin-r-5"></i> Birthdate</strong>
+                <strong><i class="fa fa-birthday-cake margin-r-5"></i> Tanggal Lahir</strong>
                   <p class="text-muted"><?php echo $teacher_detail->teacher_birthdate; ?></p>
 
                   
@@ -72,7 +72,7 @@
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                  <li class="active"><a href="#activity" data-toggle="tab">Teacher Information</a></li>
+                  <li class="active"><a href="#activity" data-toggle="tab">Informasi</a></li>
                   
                 </ul>
                 <div class="tab-content">
@@ -93,12 +93,12 @@
                         
                       </div><!-- /.user-block -->
                       <p>
-                      <strong><i class="fa fa-graduation-cap"></i> Teacher School Description: </strong>
+                      <strong><i class="fa fa-graduation-cap"></i> Deskripsi Pendidikan: </strong>
                        <b> <?php echo $teacher_detail->teacher_detail; ?></b>
                       </p>
                       <p>
                      
-                      <strong><i class="fa fa-graduation-cap"></i> Teaching Experience: </strong>
+                      <strong><i class="fa fa-graduation-cap"></i> Pengalaman Mengajar: </strong>
                          <?php if($teacher_detail->teacher_exp!="") {?>
                         <?php echo $teacher_detail->teacher_exp; ?>
                          <?php }else{echo "No Data Available";} ?>
@@ -124,14 +124,14 @@
                         <i class="fa fa-transgender bg-aqua"></i>
                         <div class="timeline-item">
                           
-                          <h3 class="timeline-header no-border"><a href="#">Gender: </a> <?php echo $teacher_detail->gender; ?></h3>
+                          <h3 class="timeline-header no-border"><a href="#">Jenis Kelamin: </a> <?php echo $teacher_detail->gender; ?></h3>
                         </div>
                       </li>
                        <li>
                         <i class="fa fa-user bg-yellow"></i>
                         <div class="timeline-item">
                           
-                          <h3 class="timeline-header no-border"><a href="#">Marriage Status: </a> <?php echo $teacher_detail->maritalstatus; ?></h3>
+                          <h3 class="timeline-header no-border"><a href="#">Status Pernikahan: </a> <?php echo $teacher_detail->maritalstatus; ?></h3>
                         </div>
                       </li>
                       
@@ -149,13 +149,13 @@
                         <i class="fa fa-clock-o bg-gray"></i>
                       </li>
                     </ul>
-                     <strong><i class="fa fa-file-text-o margin-r-5"></i> Extra Notes</strong>
+                     <strong><i class="fa fa-file-text-o margin-r-5"></i> Catatan Tambahan</strong>
                   <p>
                   <?php if($teacher_detail->teacher_notes!=""){ 
                     echo $teacher_detail->teacher_notes;
                     }else{
                     ?>
-                    <label>No Data Available</label>
+                    <label>Tidak ada data tersedia</label>
                   <?php }?>
                   </p>
                   

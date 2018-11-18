@@ -22,12 +22,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header non-print">
           <h1>
-            Student 
-            <small>Student Detail</small>
+            Siswa 
+           
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Student</a></li>
-            <li class="active">Student Detail</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Siswa</a></li>
+            
           </ol>
         </section>
 
@@ -62,7 +62,7 @@
             <div class="user-info-block">
                 <div class="user-heading">
                     <h3><?php echo $student_detail->student_name; ?></h3>
-                     <strong><br />Standar : <?php echo $student_detail->standard_title; ?></strong>
+                     <strong><br />Pelatihan : <?php echo $student_detail->standard_title; ?></strong>
                 </div>
               
                  
@@ -98,11 +98,11 @@
                         <td><?php echo $student_detail->student_address; ?></td>
                         
                       </tr>
-                       <tr class="info">
+                       <tr class="success">
                         <td>Kota :</td>
                         <td><?php echo $student_detail->student_city; ?></td>
                       </tr>
-                      <tr class="danger">
+                      <tr class="success">
                       <td>Tanggal Lahir :</td>
                         <td><?php echo $student_detail->student_birthdate; ?> (Like: yyyy/mm/dd)</td>
                       </tr>
@@ -111,12 +111,12 @@
                         <td><?php echo $student_detail->student_phone; ?> </td>
                       </tr>
                       
-                        <tr class="info">
+                        <tr class="success">
                       <td>No Telp Orang Tua :</td>
                         <td><?php if($student_detail->student_parent_phone!=""){ echo $student_detail->student_parent_phone; } else{ echo "data not available";}?>  </td>
                       </tr>
                       
-                       <tr class="info">
+                       <tr class="success">
                       <td>Email :</td>
                         <td><?php if($student_detail->student_email!=""){ echo $student_detail->student_email; } else{ echo "data not available";}?> </td>
                       </tr>
@@ -134,12 +134,12 @@
                         <td><?php // echo $student_detail->student_roll_no; ?></td>
                         
                       </tr> -->
-                        <tr class="info">
+                        <tr class="success">
                         <td>Standard :</td>
                         <td><?php echo $student_detail->standard_title; ?></td>
                         
                       </tr>
-                      <tr class="danger">
+                      <tr class="success">
                         <td>Student Unique No :</td>
                         <td><?php echo $student_detail->student_unique_no; ?></td>
                         

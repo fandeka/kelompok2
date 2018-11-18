@@ -147,8 +147,8 @@
                                        <textarea rows="2" id="teacher_notes" name="teacher_notes" placeholder="extra activity, extra archivement, award, etc" class="form-control"><?php if(isset($_REQUEST["teacher_notes"])){echo $_REQUEST["teacher_notes"]; } ?></textarea>
                                     </div>
                                       <div class="col-md-12">
-                                      <label for="teacher_detail">Teacher Detail <span class="red">*</span> </label>
-                                      <br /><label>Catatan<span class="red">*</span>: Standar, Subjek, Semua detail Instruktur, Etc</label>
+                                      <label for="teacher_detail">Detail Instruktur <span class="red">*</span> </label>
+                                      <br /><label>Catatan<span class="red">*</span>: Pelatihan, Subjek, Semua detail Instruktur, Etc</label>
                                          <textarea id="editor1" name="editor1" rows="10" cols="80" >
                                           <?php if(isset($_REQUEST["editor1"])){echo $_REQUEST["editor1"]; } ?>  
                                         </textarea>
