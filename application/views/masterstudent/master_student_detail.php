@@ -62,7 +62,7 @@
             <div class="user-info-block">
                 <div class="user-heading">
                     <h3><?php echo $student_detail->student_name; ?></h3>
-                     <strong><br />Standar : <?php echo $student_detail->standard_title; ?></strong>
+                     <strong><br />Pelatihan : <?php echo $student_detail->standard_title; ?></strong>
                 </div>
               
                  
@@ -89,7 +89,7 @@
                 
             </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
-                <h4>Informasi Personal</h4>
+                <h4>Informasi</h4>
                   <table class="table">
     
                     <tbody>
@@ -98,11 +98,11 @@
                         <td><?php echo $student_detail->student_address; ?></td>
                         
                       </tr>
-                       <tr class="info">
+                       <tr class="success">
                         <td>City :</td>
                         <td><?php echo $student_detail->student_city; ?></td>
                       </tr>
-                      <tr class="danger">
+                      <tr class="success">
                       <td>Birht Date :</td>
                         <td><?php echo $student_detail->student_birthdate; ?> (Like: yyyy/mm/dd)</td>
                       </tr>
@@ -111,12 +111,12 @@
                         <td><?php echo $student_detail->student_phone; ?> </td>
                       </tr>
                       
-                        <tr class="info">
+                        <tr class="success">
                       <td>Student Parent Phone :</td>
                         <td><?php if($student_detail->student_parent_phone!=""){ echo $student_detail->student_parent_phone; } else{ echo "data not available";}?>  </td>
                       </tr>
                       
-                       <tr class="info">
+                       <tr class="success">
                       <td>Student Email :</td>
                         <td><?php if($student_detail->student_email!=""){ echo $student_detail->student_email; } else{ echo "data not available";}?> </td>
                       </tr>
@@ -129,12 +129,12 @@
                   <table class="table">
     
                     <tbody>
-                        <tr class="info">
-                        <td>Standard :</td>
+                        <tr class="success">
+                        <td>Pelatihan :</td>
                         <td><?php echo $student_detail->standard_title; ?></td>
                         
                       </tr>
-                      <tr class="danger">
+                      <tr class="success">
                         <td>Student Unique No :</td>
                         <td><?php echo $student_detail->student_unique_no; ?></td>
                         

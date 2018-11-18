@@ -60,7 +60,7 @@
                                         <input type="text" class="form-control" id="student_birthdate" name="student_birthdate" placeholder="Show Date" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask value="<?php echo $student->student_birthdate; ?>">
                                     </div>
                                      <div class="col-md-6">
-                                        <label for="student_standard">Standar <span class="red">*</span></label>
+                                        <label for="student_standard">Pelatihan <span class="red">*</span></label>
                                         <select class="form-control select2" name="student_standard" id="student_standard" style="width: 100%;">
                                             <?php foreach($school_standard as $standard){
                                                 ?>
@@ -78,7 +78,7 @@
                                                 <?php
                                             } ?>
                                         </select>
-                                        <p>Note: Standar tidak tersedia ? : <a href="<?php echo site_url("standard/manage_standard"); ?>"> Tambah Standar</a></p>
+                                        <p>Note: Standar tidak tersedia ? : <a href="<?php echo site_url("standard/manage_standard"); ?>"> Tambah Pelatihan</a></p>
                                     </div>
                                      <div class="col-md-6">
                                         <label for="student_address">Alamat <span class="red">*</span></label>

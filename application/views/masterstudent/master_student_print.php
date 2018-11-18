@@ -31,8 +31,7 @@
                     <thead>
                       <tr>
                        <th>No</th> 
-                      <th>Nama Siswa</th>
-                      <th>Tanggal Lahir</th>
+                      <th>Nama</th>
                       <th>Pangkat</th>
                       <th>Korp</th>
                       <th>NRP</th>
@@ -49,17 +48,14 @@
                     <tr>
                     <form method="post">
                        <td><?php echo $no++;?></td>
-                        <td>
-                        <?php echo $students->student_name; ?>
-                        </td>
-                        <td><?php echo $students->student_birthdate; ?></td>
+                        <td><?php echo $students->student_name; ?> </td>
                         <td><?php echo $students->pangkat; ?></td>
                         <td><?php echo $students->korp; ?></td>
                         <td><?php echo $students->nrp; ?></td>
                         <td><?php echo $students->kesatuan; ?></td>
                         <td><?php echo $students->jabatan; ?></td>
                         <td><?php echo $students->matra; ?></td>
-                        <td><?php echo $students->standard_title; echo $students->year; ?></td>
+                        <td><?php echo $students->standard_title; echo '- '; echo $students->year; ?></td>
 
                         </form>
                     </tr>
