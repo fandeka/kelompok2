@@ -135,12 +135,12 @@
                         
                       </tr> -->
                         <tr class="success">
-                        <td>Standard :</td>
+                        <td>Pelatihan :</td>
                         <td><?php echo $student_detail->standard_title; ?></td>
                         
                       </tr>
                       <tr class="success">
-                        <td>Student Unique No :</td>
+                        <td>Unique no :</td>
                         <td><?php echo $student_detail->student_unique_no; ?></td>
                         
                       </tr>
