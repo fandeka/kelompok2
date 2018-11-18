@@ -150,7 +150,7 @@ function download_nilai(){
                         ->setCellValue('A2', 'No')
                         ->setCellValue('B2', 'Nama Siswa')
                         ->setCellValue('C2', 'Tahun')
-                        ->setCellValue('D2', 'Standar')
+                        ->setCellValue('D2', 'Pelatihan')
                         ->setCellValue('E2', 'Tanggal Lahir')
                         ->setCellValue('F2', 'Alamat')
                         ->setCellValue('G2', 'Kota')
