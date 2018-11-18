@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
  <?php  $this->load->view("common/common_head"); ?>
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
@@ -64,15 +66,20 @@
                 <table id="example2" class="example table table-bordered table-hover display">
                     <thead>
                       <tr>
-                       <th>No</th> 
+                        <th>No</th> 
                         <th>Nama</th>
                         <th>Pangkat</th>
                         <th>Korp</th>
-                        <th>Kesatuan</th>
+                        <th>NRP</th>
                         <th>Jabatan</th>
+                        <th>Kesatuan</th>
                         <th>Matra</th>
                         <th>Pelatihan</th>
                         <th>Tahun</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Alamat</th>
+                        <th>Kota</th>
+                        <th>No telp</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
@@ -83,16 +90,22 @@
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $no++ ?></td>
+                       <td><?php echo $no++ ?>
                         <td>
-                        <?php echo $students->student_name; ?></td>
+                        <?php echo $students->student_name; ?>
+                        </td>
                         <td><?php echo $students->pangkat; ?></td>
                         <td><?php echo $students->korp; ?></td>
-                        <td><?php echo $students->kesatuan;; ?></td>
+                        <td><?php echo $students->nrp; ?></td>
                         <td><?php echo $students->jabatan; ?></td>
+                        <td><?php echo $students->kesatuan; ?></td>
                         <td><?php echo $students->matra; ?></td>
-                        <td><?php echo $students->standard_title;?></td>
+                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?></td>
                         <td><?php echo $students->year; ?></td>
+                        <td><?php echo $students->student_birthdate; ?></td>
+                        <td><?php echo $students->student_address; ?></td>
+                        <td><?php echo $students->student_city; ?></td>
+                        <td><?php echo $students->student_phone; ?></td>
                         <td>
                             <a href="<?php echo site_url("student/delete_history_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
@@ -144,21 +157,61 @@
     <script src="<?php echo base_url($this->config->item("theme_admin")."/dist/js/app.min.js"); ?>"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/dist/js/demo.js"); ?>"></script>
+
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
      <script>
 
-      $(function () {
-        
-        $('#example2').DataTable({
+      $(function (){$('#example2').DataTable({
           "paging": true,
           "lengthChange": true,
           "searching": true,
           "ordering": true,
           "order": [[ 0, "desc" ]],
           "info": true,
-          "autoWidth": false
-          
-          
+          "autoWidth": false,
+          "dom": 'Bfrtip',
+          "buttons": [{
+                          extend: 'excel',
+                          className: 'fa fa-download',
+                          messageTop: 'Data History Siswa',
+                          text: '  Unduh Excel',
+                          exportOptions: {
+                              modifier: {
+                                  page: 'current'
+                              },
+                              columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+                          }
+                      },
+                      {
+                            extend: 'print',
+                            className: 'fa fa-print',
+                            text: '  Print',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'current'
+                                },
+                                columns: [0,1,2,3,4,5,6,8]
+                            }
+
+                      }],
+          "columnDefs": [
+                  {
+                      "targets": [ 5,7,9,10,11,12,13],
+                      "visible": false,
+                      "searchable": false
+                  },
+              ]
         });
+
         
         $("body").on("change",".tgl_checkbox",function(){
             var table = $(this).data("table");

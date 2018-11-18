@@ -35,7 +35,7 @@
             <div class="col-md-6">
                 <div class="col-md-6">
                  <select class="form-control select2" name="filter" id="standard_type"  onchange="choose_standard_type()" style="width: 100%;">
-                                           <option disabled>Pilih Standar</option>
+                                           <option value="">Pilih Standar</option>
                                             <?php foreach($school_standard as $standard){
                                                 ?>
                                                 <option value="<?php echo $standard->standard_id; ?>" <?php  if(isset($_GET["standard"]) && $_GET["standard"]==$standard->standard_id){ echo "selected"; } ?>><?php echo $standard->standard_title; echo " - "; echo $standard->year;?></option>

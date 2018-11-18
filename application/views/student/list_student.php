@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
  <?php  $this->load->view("common/common_head"); ?>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
+
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
@@ -44,13 +49,13 @@
             </div>
             
               <div class="col-md-6">
-               <div class="col-md-4">
-                 <a href="<?php  echo site_url("student/student_excel_download"); ?>" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Unduh Excel</a>
-                </div>   
-                <div class="col-md-4">
+<!--                <div class="col-md-4">
+                 <a href="<?php  // echo site_url("student/student_excel_download"); ?>" class="btn btn-primary pull-right"><i class="fa fa-download"></i> Unduh Excel</a>
+                </div> -->   
+<!--                 <div class="col-md-4">
                  
-                 <a href="<?php echo site_url("student/student_print"); ?>" class="btn btn-primary "><i class="fa fa-print"></i> Print</a>
-                </div> 
+                 <a href="<?php // echo site_url("student/student_print"); ?>" class="btn btn-primary "><i class="fa fa-print"></i> Print</a>
+                </div>  -->
              <a href="<?php echo site_url("student/add_student"); ?>" class="btn btn-primary pull-right">Tambah</a>
             </div>
            
@@ -64,45 +69,55 @@
                 <table id="example2" class="example table table-bordered table-hover display">
                     <thead>
                       <tr>
-                       <th>ID</th> 
+                        <th>No</th> 
                         <th>Nama</th>
-                         <th>Pelatihan</th>
-                       <!-- <th>Student Roll No</th> -->
+                        <th>Pangkat</th>
+                        <th>Korp</th>
+                        <th>NRP</th>
+                        <th>Jabatan</th>
+                        <th>Kesatuan</th>
+                        <th>Matra</th>
+                        <th>Pelatihan</th>
+                        <th>Tahun</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Alamat</th>
+                        <th>Kota</th>
+                        <th>No telp</th>
                         <th>Username</th>
                         <th>Password</th>
-                        
-                       <th>Alamat</th>
-                      <th>Telepon</th>
-                      <th>Perkembangan</th>
-<!--                       <th>Status</th>
-                        <th width="80">Aksi</th>
-                      </tr> -->
+                        <th>Perkembangan</th>
+                        <th>Status</th>
+                      </tr>
                     </thead>
                     <tbody>
+                <?php $no=1; ?>
                 <?php foreach($student as $students){
                     ?>
                     <tr>
                     <form method="post">
-                       <td><?php echo $students->student_id; ?>
+                       <td><?php echo $no++ ?>
                         <td>
-                        <?php echo anchor('student/student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); ?>
+                        <?php echo anchor('masterstudent/master_student_detail/'.$students->student_id, $students->student_name, 'title="Student Detail"'); ?>
                         </td>
-                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?>
-                      </td>
-                      <!--  <td><?php //echo $students->student_roll_no; ?></td> -->
+                        <td><?php echo $students->pangkat; ?></td>
+                        <td><?php echo $students->korp; ?></td>
+                        <td><?php echo $students->nrp; ?></td>
+                        <td><?php echo $students->jabatan; ?></td>
+                        <td><?php echo $students->kesatuan; ?></td>
+                        <td><?php echo $students->matra; ?></td>
+                        <td><?php echo $students->standard_title; echo " - "; echo $students->year;?></td>
+                        <td><?php echo $students->year; ?></td>
+                        <td><?php echo $students->student_birthdate; ?></td>
+                        <td><?php echo $students->student_address; ?></td>
+                        <td><?php echo $students->student_city; ?></td>
+                        <td><?php echo $students->student_phone; ?></td>
                         <td><?php echo $students->student_user_name; ?></td>
                         <td><?php echo $password = $students->student_orgpassword; ?></td>
-                        <td><?php echo $students->student_address; ?></td>
-                        <td><?php echo $students->student_phone; ?></td>
                         <td>
                         <a href="<?php echo site_url("growth/manage_growth/".$students->student_id); ?>" class="btn btn-primary"><i class="fa fa-plus"></i>Set Perkembangan</a>
                        </td>
                          <td><input class='tgl tgl-ios tgl_checkbox' data-table="student_detail" data-status="student_status" data-idfield="student_id"  data-id="<?php echo $students->student_id; ?>" id='cb_<?php echo $students->student_id; ?>' type='checkbox' <?php echo ($students->student_status==1)? "checked" : ""; ?> />
-    <label class='tgl-btn' for='cb_<?php echo $students->student_id; ?>'></label></td>
-                        <td>
-                            
-<!--                             <a href="<?php // echo site_url("student/edit_student/".$students->student_id); ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                            <a href="<?php // echo site_url("student/delete_student/".$students->student_id); ?>" onclick="return confirm('are you sure to delete?')" class="btn btn-danger"><i class="fa fa-remove"></i></a> -->
+                          <label class='tgl-btn' for='cb_<?php echo $students->student_id; ?>'></label>
                         </td>
                         </form>
                     </tr>
@@ -152,20 +167,60 @@
     <script src="<?php echo base_url($this->config->item("theme_admin")."/dist/js/app.min.js"); ?>"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url($this->config->item("theme_admin")."/dist/js/demo.js"); ?>"></script>
+
+
+     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+
      <script>
 
-      $(function () {
-        
-        $('#example2').DataTable({
+      $(function (){$('#example2').DataTable({
           "paging": true,
           "lengthChange": true,
           "searching": true,
           "ordering": true,
           "order": [[ 0, "desc" ]],
           "info": true,
-          "autoWidth": false
-          
-          
+          "autoWidth": false,
+          "dom": 'Bfrtip',
+          "buttons": [{
+                          extend: 'excel',
+                          className: 'fa fa-download',
+                          messageTop: 'Data Siswa',
+                          text: '  Unduh Excel',
+                          exportOptions: {
+                              modifier: {
+                                  page: 'current'
+                              },
+                              columns: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+                          }
+                      },
+                      {
+                            extend: 'print',
+                            className: 'fa fa-print',
+                            text: '   Print',
+                            exportOptions: {
+                                modifier: {
+                                    page: 'current'
+                                },
+                                columns: [0,1,2,3,4,5,6,8]
+                            }
+
+                      }],
+          "columnDefs": [
+                  {
+                      "targets": [ 5,7,9,10,11,12,13 ],
+                      "visible": false,
+                      "searchable": false
+                  },
+              ]
         });
         
         $("body").on("change",".tgl_checkbox",function(){
@@ -188,9 +243,7 @@
         });
       });
 
-  
-table.buttons().container()
-    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+
     </script>
     <script>
     $(function(){
