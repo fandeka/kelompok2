@@ -94,30 +94,30 @@
     
                     <tbody>
                       <tr class="success">
-                         <td>Address : </td>
+                         <td>Alamat : </td>
                         <td><?php echo $student_detail->student_address; ?></td>
                         
                       </tr>
                        <tr class="success">
-                        <td>City :</td>
+                        <td>Kota :</td>
                         <td><?php echo $student_detail->student_city; ?></td>
                       </tr>
                       <tr class="success">
-                      <td>Birht Date :</td>
+                      <td>Tanggal Lahir :</td>
                         <td><?php echo $student_detail->student_birthdate; ?> (Like: yyyy/mm/dd)</td>
                       </tr>
                      <tr class="success">
-                      <td>Student Phone :</td>
+                      <td>No Telp :</td>
                         <td><?php echo $student_detail->student_phone; ?> </td>
                       </tr>
                       
                         <tr class="success">
-                      <td>Student Parent Phone :</td>
+                      <td>Telp Orang Tua :</td>
                         <td><?php if($student_detail->student_parent_phone!=""){ echo $student_detail->student_parent_phone; } else{ echo "data not available";}?>  </td>
                       </tr>
                       
                        <tr class="success">
-                      <td>Student Email :</td>
+                      <td>Email :</td>
                         <td><?php if($student_detail->student_email!=""){ echo $student_detail->student_email; } else{ echo "data not available";}?> </td>
                       </tr>
                     </tbody>
