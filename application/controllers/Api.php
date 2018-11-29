@@ -323,6 +323,115 @@ public function login(){
              
     echo json_encode($data);
     }
+
+
+    public function update_student(){
+     //$_POST = $_REQUEST;
+     
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('student_name', 'Student Name', 'trim|required');
+        // $this->form_validation->set_rules('student_birthdate', 'Student Birthdate', 'trim|required');
+        $this->form_validation->set_rules('student_address', 'Student Address', 'trim|required');
+        $this->form_validation->set_rules('student_city', 'Student City', 'trim|required');
+        // $this->form_validation->set_rules('student_phone', 'Student Phone', 'trim|required');
+        $this->form_validation->set_rules('pangkat', 'Pangkat', 'trim|required');
+        $this->form_validation->set_rules('korp', 'Korp', 'trim|required');
+        $this->form_validation->set_rules('nrp', 'NRP', 'trim|required');
+        $this->form_validation->set_rules('kesatuan', 'Kesatuan', 'trim|required');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
+        $this->form_validation->set_rules('matra', 'Matra', 'trim|required');
+
+        //echo json_encode($_POST); 
+
+        if ($this->form_validation->run() == FALSE) 
+        {
+                      $data["responce"] = false;
+                      $data["error"] = $this->form_validation->error_string();
+
+                      echo json_encode($data); 
+        }
+        else
+        {        
+                   
+
+
+                   $update_array = array(
+                            "student_name"=>$this->input->post("student_name"),
+                            // "student_birthdate"=>date('Y-m-d',$this->input->post("student_birthdate")),
+                           
+                            "student_address"=>$this->input->post("student_address"),
+                            "student_city"=>$this->input->post("student_city"),
+                         
+                            "student_parent_phone"=>$this->input->post("student_parent_phone"),
+                        
+                            "pangkat"=>$this->input->post("pangkat"),
+                            "korp"=>$this->input->post("korp"),
+                            "nrp"=>$this->input->post("nrp"),
+                            "kesatuan"=>$this->input->post("kesatuan"),
+                            "jabatan"=>$this->input->post("jabatan"),
+                            "matra"=>$this->input->post("matra") 
+                            ); 
+
+                    $this->load->model("common_model");
+                    $this->common_model->data_update("student_detail",$update_array,array("student_id"=>$this->input->post("student_id"))
+                                );        
+         $data["berhasil"] = 'Berhasil';          
+         echo json_encode($data);        
+       }
+       //$data["error"] = $_POST;
+       echo json_encode($data); 
+          
+    }
+
+    public function upload(){
+
+        $data = array();
+
+        if($_POST){
+
+            // //$name = $_POST['name'];
+            $fileinfo = pathinfo($_FILES['image']['name']);
+            // //getting the file extension 
+            $extension = $fileinfo['extension'];
+
+            $upload_path = './uploads/studentphoto/';
+            $file_path = $upload_path . $_FILES['image']['name']. '.'. $extension; 
+
+
+            // $config['upload_path'] = $upload_path;
+            // $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+            // $this->upload->do_upload('image');
+
+            // $update_array["student_photo"] = $_FILES['image']['name']. '.'. $extension;
+            // $this->load->model("common_model");
+            // $this->common_model->data_update("student_detail",$update_array,array("student_id"=>$student_id)
+            //                     );
+
+
+            $student_id = $_REQUEST['student_id'];
+
+
+             move_uploaded_file($_FILES['image']['tmp_name'],$file_path);
+
+            $update_array = array("student_photo"=>$_FILES['image']['name']); 
+
+            $this->load->model("common_model");
+            $this->common_model->data_update("student_detail",$update_array,array("student_id"=>$student_id)
+                                ); 
+
+
+        }
+
+
+
+        $data['sukses'] = 'sukses';
+
+
+
+        echo json_encode($data); 
+
+    }
 }
 
 ?>
