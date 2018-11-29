@@ -33,4 +33,6 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     compile "com.google.android.gms:play-services-gcm:9.0.0"
+
+    compile 'net.gotev:uploadservice:2.0'
 }

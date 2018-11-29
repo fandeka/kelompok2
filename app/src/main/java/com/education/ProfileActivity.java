@@ -1,11 +1,14 @@
 package com.education;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
@@ -65,6 +68,8 @@ public class ProfileActivity extends CommonAppCompatActivity {
                 startActivity(intent);
             }
         });*/
+
+
 
         File cacheDir = StorageUtils.getCacheDirectory(this);
         options = new DisplayImageOptions.Builder()
@@ -158,6 +163,33 @@ public class ProfileActivity extends CommonAppCompatActivity {
 
             TextView txtkesatuan = (TextView)findViewById(R.id.kesatuan);
             txtkesatuan.setText(objStudData.getString("kesatuan"));
+
+
+            FloatingActionButton fabedit = (FloatingActionButton) findViewById(R.id.fabedit);
+            fabedit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(ProfileActivity.this).create();
+                    alertDialog.setTitle("Ubah Data");
+                    alertDialog.setMessage("Anda akan dialihkan ke menu ubah data");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Batal",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                    alertDialog.show();
+
+                }
+            });
 
 
 

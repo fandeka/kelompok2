@@ -127,6 +127,10 @@
             android:name=".TopStudentActivity"
             android:label="@string/title_activity_top_student"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:label="Edit Profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

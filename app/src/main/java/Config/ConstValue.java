@@ -6,7 +6,7 @@ package Config;
 public class ConstValue {
     //public  static String BASE_URL = "http://iclauncher.com/education/";
    // public  static String BASE_URL = "http://192.168.0.102:89/education/";
-    public  static String BASE_URL = "http://2tni.mabes.online";
+    public  static String BASE_URL = "http://192.168.1.166/kelompok2_elearning/";
     public  static  String LOGIN_URL = BASE_URL+"/index.php/api/login";
     public static String STUDENT_PROFILE_URL = BASE_URL+"/index.php/api/get_student_profile";
     public static String STUDENT_ATTENDENCE_URL = BASE_URL+"/index.php/api/get_student_attendence";
@@ -22,6 +22,8 @@ public class ConstValue {
     public static String ENQUIRY_URL = BASE_URL+"/index.php/api/get_enquiry";
     public static String SEND_ENQUIRY_URL = BASE_URL+"/index.php/api/send_enquiry";
     public static String GCM_REGISTER_URL = BASE_URL+"/index.php/api/register_gcm";
+    public static String UPLOAD_URL = BASE_URL+"/index.php/api/upload";
+    public static String UPDATE_STUDENT = BASE_URL+"/index.php/api/update_student";
 
     public  static  String PREF_NAME = "education.pref";
     public static  String COMMON_KEY = "student_id";

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.education.ProfileActivity">
+    tools:context="com.education.EditProfileActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -22,13 +22,17 @@
             app:contentScrim="?attr/colorPrimary"
             android:background="@color/color_1"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-<util.RoundedImageView
-    android:id="@+id/top_image"
-    android:layout_width="180dp"
-    android:layout_height="180dp"
-    android:layout_gravity="center_horizontal"
 
-    android:scaleType="centerInside" />
+            <util.RoundedImageView
+                android:id="@+id/top_image"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+
+                android:scaleType="centerInside" />
+
+
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -40,15 +44,23 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabedit"
+        android:id="@+id/fabsave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:layout_anchor="@+id/app_bar"
         app:layout_anchorGravity="right|center"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
-    <include layout="@layout/content_profile" />
+    <Button
+        android:id="@+id/btnchoose"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:text="Pilih Foto"
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="bottom|center" />
+
+    <include layout="@layout/content_editprofile" />
 
 
 </android.support.design.widget.CoordinatorLayout>
