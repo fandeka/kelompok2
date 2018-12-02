@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,8 @@ public class EditProfileActivity extends CommonAppCompatActivity {
     private Uri filePath;
 
     private RoundedImageView top_image;
+    boolean clicked=false;
+    boolean clickedResult = false;
 
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     @Override
@@ -215,10 +218,7 @@ public class EditProfileActivity extends CommonAppCompatActivity {
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
-
-
-
+                    clicked=true;
 
                 }
             });
@@ -244,18 +244,29 @@ public class EditProfileActivity extends CommonAppCompatActivity {
 
 
 
-                                    new EditProfileActivity.setUserData().execute();
 
 
 
-                                    if (buttonChoose.hasOnClickListeners()){
-                                        uploadMultipart();
+
+                                    if (clicked && clickedResult){
+										uploadMultipart();
+                                        new EditProfileActivity.setUserData().execute();
+                                        
+
+                                    }else if (clicked){
+                                        new EditProfileActivity.setUserDataNoUpload().execute();
+
+                                    } else {
+
+                                        new EditProfileActivity.setUserDataNoUpload().execute();
+
                                     }
-
-
 
                                     Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
                                     startActivity(intent);
+
+
+
                                 }
                             });
                     alertDialog.show();
@@ -286,7 +297,13 @@ public class EditProfileActivity extends CommonAppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            clickedResult = true;
+        }else {
+
+            clickedResult = false;
         }
+
+
     }
 
 
@@ -297,7 +314,10 @@ public class EditProfileActivity extends CommonAppCompatActivity {
         String name = "foto";
 
         //getting the actual path of the image
-         String path = getPath(filePath);
+        String path = getPath(filePath);
+
+
+
 
         //Uploading code
         try {
@@ -434,7 +454,120 @@ public class EditProfileActivity extends CommonAppCompatActivity {
             String kesatuan = txtkesatuan.getText().toString().trim();
 
 
+            String path = getPath(filePath);
 
+
+            File file = new File(path);
+            String nameFile = file.getName();
+            String student_photo = nameFile;
+
+
+
+
+
+
+
+
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+
+            nameValuePairs.add(new BasicNameValuePair("school_id", j_reader.getJSONkeyString("student_data", "school_id")));
+            nameValuePairs.add(new BasicNameValuePair("student_id", common.getSession(ConstValue.COMMON_KEY)));
+            nameValuePairs.add(new BasicNameValuePair("student_name", name));
+            nameValuePairs.add(new BasicNameValuePair("student_birthdate",bdate));
+            nameValuePairs.add(new BasicNameValuePair("student_address",address));
+            nameValuePairs.add(new BasicNameValuePair("student_city",city));
+            nameValuePairs.add(new BasicNameValuePair("student_parent_phone",parentphone));
+            nameValuePairs.add(new BasicNameValuePair("matra",matra));
+            nameValuePairs.add(new BasicNameValuePair("nrp",nrp));
+            nameValuePairs.add(new BasicNameValuePair("korp",korp));
+            nameValuePairs.add(new BasicNameValuePair("pangkat",pangkat));
+            nameValuePairs.add(new BasicNameValuePair("jabatan",jabatan));
+            nameValuePairs.add(new BasicNameValuePair("kesatuan",kesatuan));
+            nameValuePairs.add(new BasicNameValuePair("student_photo",student_photo));
+            JSONParser jsonParser = new JSONParser();
+
+            try {
+                String json_responce = jsonParser.makeHttpRequest(ConstValue.UPDATE_STUDENT,"POST", nameValuePairs);
+
+                JSONObject jObj = new JSONObject(json_responce);
+                if (jObj.has("berhasil")) {
+                    //responseString = jObj.getString("error");
+                    responseString = "Data berhasil disimpan..";
+                }else if (!jObj.getBoolean("responce")){
+                    responseString = jObj.getString("error");
+                }else{
+                        responseString = "Gagal";
+                }
+
+
+
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                responseString = e.getMessage();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                responseString = e.getMessage();
+                e.printStackTrace();
+            }
+
+            // TODO: register the new account here.
+            return responseString;
+        }
+
+        @Override
+        protected void onPostExecute(final String success) {
+
+            if (success==null) {
+                loadCView();
+            } else {
+                Toast.makeText(getApplicationContext(),success,Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+        }
+    }
+
+    public class setUserDataNoUpload extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // TODO: attempt authentication against a network service.
+            String responseString = null;
+
+            TextView txtname = (TextView)findViewById(R.id.fullname);
+            String name = txtname.getText().toString().trim();
+
+            TextView txtbdate = (TextView)findViewById(R.id.birthdate);
+            String bdate = txtbdate.getText().toString().trim();
+
+            TextView txtaddress = (TextView)findViewById(R.id.address);
+            String address = txtaddress.getText().toString().trim();
+
+            TextView txtcity = (TextView)findViewById(R.id.city);
+            String city = txtcity.getText().toString().trim();
+
+            TextView txtparentphone = (TextView)findViewById(R.id.parent_contact);
+            String parentphone = txtparentphone.getText().toString().trim();
+
+            TextView txtmatra = (TextView)findViewById(R.id.matra);
+            String matra = txtmatra.getText().toString().trim();
+
+            TextView txtnrp = (TextView)findViewById(R.id.nrp);
+            String nrp = txtnrp.getText().toString().trim();
+
+            TextView txtkorp = (TextView)findViewById(R.id.korp);
+            String korp = txtkorp.getText().toString().trim();
+
+            TextView txtpangkat = (TextView)findViewById(R.id.pangkat);
+            String pangkat = txtpangkat.getText().toString().trim();
+
+            TextView txtjabatan = (TextView)findViewById(R.id.jabatan);
+            String jabatan = txtjabatan.getText().toString().trim();
+
+            TextView txtkesatuan = (TextView)findViewById(R.id.kesatuan);
+            String kesatuan = txtkesatuan.getText().toString().trim();
 
 
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
@@ -464,7 +597,7 @@ public class EditProfileActivity extends CommonAppCompatActivity {
                 }else if (!jObj.getBoolean("responce")){
                     responseString = jObj.getString("error");
                 }else{
-                        responseString = "Gagal";
+                    responseString = "Gagal";
                 }
 
 
