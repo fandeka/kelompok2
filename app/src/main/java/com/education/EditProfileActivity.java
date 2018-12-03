@@ -1,14 +1,18 @@
 package com.education;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.provider.SyncStateContract;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -40,6 +44,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -64,6 +69,7 @@ public class EditProfileActivity extends CommonAppCompatActivity {
     JSONObject objStudData;
     DisplayImageOptions options;
     ImageLoaderConfiguration imgconfig;
+    ProgressDialog progressbar;
 
     int PICK_IMAGE_REQUEST = 1;
     //storage permission code
@@ -78,6 +84,10 @@ public class EditProfileActivity extends CommonAppCompatActivity {
     private RoundedImageView top_image;
     boolean clicked=false;
     boolean clickedResult = false;
+    boolean uploadstatus = false;
+
+
+
 
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     @Override
@@ -187,7 +197,7 @@ public class EditProfileActivity extends CommonAppCompatActivity {
                     myCalendar.set(Calendar.MONTH, monthOfYear);
                     myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                    String myFormat = "yyyy/MM/dd"; //In which you need put here
+                    String myFormat = "yyyy-MM-dd"; //In which you need put here
                     SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
                     txtbdate.setText(sdf.format(myCalendar.getTime()));
@@ -223,6 +233,9 @@ public class EditProfileActivity extends CommonAppCompatActivity {
                 }
             });
 
+
+
+
             FloatingActionButton fabsave = (FloatingActionButton) findViewById(R.id.fabsave);
             fabsave.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -243,21 +256,18 @@ public class EditProfileActivity extends CommonAppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
 
 
-
-
-
-
-
                                     if (clicked && clickedResult){
-										uploadMultipart();
-                                        new EditProfileActivity.setUserData().execute();
-                                        
+
+                                        uploadMultipart();
+                                        if (uploadstatus){
+                                            new EditProfileActivity.setUserData().execute();
+                                        }
+
 
                                     }else if (clicked){
                                         new EditProfileActivity.setUserDataNoUpload().execute();
 
                                     } else {
-
                                         new EditProfileActivity.setUserDataNoUpload().execute();
 
                                     }
@@ -292,7 +302,27 @@ public class EditProfileActivity extends CommonAppCompatActivity {
             filePath = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                top_image.setImageBitmap(bitmap);
+
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,50,stream);
+                byte[] byteArray = stream.toByteArray();
+                Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+                long lengthbmp = byteArray.length;
+                double sizeInKB=(lengthbmp/1024);
+
+                if (sizeInKB < 1024){
+                    top_image.setImageBitmap(compressedBitmap);
+                } else {
+                    Toast.makeText(this, "Size lebih besar dari 1Mb",
+                            Toast.LENGTH_LONG).show();
+                }
+
+
+                //top_image.setImageBitmap(bitmap);
+                //top_image.setImageBitmap(compressedBitmap);
+
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -334,6 +364,7 @@ public class EditProfileActivity extends CommonAppCompatActivity {
         } catch (Exception exc) {
             Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
         }
+        uploadstatus = true;
     }
 
     public String getPath(Uri uri) {
