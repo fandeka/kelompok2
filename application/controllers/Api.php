@@ -330,7 +330,7 @@ public function login(){
      
         $this->load->library('form_validation');
         $this->form_validation->set_rules('student_name', 'Student Name', 'trim|required');
-        // $this->form_validation->set_rules('student_birthdate', 'Student Birthdate', 'trim|required');
+        $this->form_validation->set_rules('student_birthdate', 'Student Birthdate', 'trim|required');
         $this->form_validation->set_rules('student_address', 'Student Address', 'trim|required');
         $this->form_validation->set_rules('student_city', 'Student City', 'trim|required');
         // $this->form_validation->set_rules('student_phone', 'Student Phone', 'trim|required');
@@ -352,7 +352,7 @@ public function login(){
 
                    $update_array = array(
                             "student_name"=>$this->input->post("student_name"),
-                            // "student_birthdate"=>date('Y-m-d',$this->input->post("student_birthdate")),
+                            "student_birthdate"=>$this->input->post("student_birthdate"),
                            
                             "student_address"=>$this->input->post("student_address"),
                             "student_city"=>$this->input->post("student_city"),
@@ -378,7 +378,7 @@ public function login(){
 
                    $update_array = array(
                             "student_name"=>$this->input->post("student_name"),
-                            // "student_birthdate"=>date('Y-m-d',$this->input->post("student_birthdate")),
+                            "student_birthdate"=>$this->input->post("student_birthdate"),
                            
                             "student_address"=>$this->input->post("student_address"),
                             "student_city"=>$this->input->post("student_city"),
